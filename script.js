@@ -1380,7 +1380,19 @@ function setupEvents() {
   }
 }
 
+function updateMobileDeviceClass() {
+  const isMobileDevice =
+    window.matchMedia("(max-width: 768px)").matches ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+
+  document.body.classList.toggle("mobile-device", isMobileDevice);
+}
+
 function init() {
+  updateMobileDeviceClass();
+  window.addEventListener("resize", updateMobileDeviceClass);
+  window.addEventListener("orientationchange", updateMobileDeviceClass);
+
   loadSoundSettings();
   applySoundSettingsToUi();
   setStatus("시작 버튼을 눌러 게임을 시작하세요.");
