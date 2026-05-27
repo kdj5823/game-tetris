@@ -1371,3 +1371,80 @@ body.mobile-device .game-controls {
   margin: 0 !important;
   gap: 4px !important;
 }
+
+/* Unified control grid layout (PC + mobile) */
+.game-controls {
+  display: grid !important;
+  grid-template-columns: 1fr 0.9fr 1fr !important;
+  grid-template-rows: 38px 34px 34px 42px 38px !important;
+  grid-template-areas:
+    "hold hold hold"
+    "left rotate right"
+    "left down right"
+    "drop drop drop"
+    "start pause reset" !important;
+  gap: 4px !important;
+  width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.btn-hold { grid-area: hold !important; }
+.btn-left { grid-area: left !important; height: 100% !important; min-height: 0 !important; }
+.btn-rotate { grid-area: rotate !important; height: 100% !important; min-height: 0 !important; }
+.btn-right { grid-area: right !important; height: 100% !important; min-height: 0 !important; }
+.btn-softdrop { grid-area: down !important; height: 100% !important; min-height: 0 !important; width: 100% !important; }
+.btn-harddrop { grid-area: drop !important; height: 100% !important; min-height: 0 !important; }
+.btn-start { grid-area: start !important; height: 100% !important; min-height: 0 !important; }
+.btn-pause { grid-area: pause !important; height: 100% !important; min-height: 0 !important; }
+.btn-reset { grid-area: reset !important; height: 100% !important; min-height: 0 !important; }
+
+.control-row,
+.hold-row,
+.move-row,
+.softdrop-row,
+.harddrop-row,
+.action-row {
+  display: contents !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Keep SOUND below controls on mobile too */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 0 !important;
+  }
+
+  .app {
+    padding-bottom: 0 !important;
+  }
+
+  .sound-panel,
+  .bottom-sound-panel {
+    display: block !important;
+  }
+}
+
+body.mobile-device {
+  padding-bottom: 0 !important;
+}
+
+body.mobile-device .app {
+  padding-bottom: 0 !important;
+}
+
+body.mobile-device .sound-panel,
+body.mobile-device .bottom-sound-panel {
+  display: block !important;
+}
