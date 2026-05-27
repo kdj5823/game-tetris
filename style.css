@@ -1883,9 +1883,10 @@ body.mobile-device .status-text {
     grid-template-areas:
       "hold hold hold"
       "left rotate right"
+      "down down down"
       "drop drop drop"
       "start pause reset" !important;
-    grid-template-rows: 44px 46px 42px 40px !important;
+    grid-template-rows: 44px 46px 36px 42px 40px !important;
     gap: 5px !important;
   }
 
@@ -1893,7 +1894,15 @@ body.mobile-device .status-text {
   .btn-left { grid-area: left !important; min-height: 46px !important; height: 46px !important; font-size: 30px !important; }
   .btn-rotate { grid-area: rotate !important; min-height: 46px !important; height: 46px !important; font-size: 15px !important; }
   .btn-right { grid-area: right !important; min-height: 46px !important; height: 46px !important; font-size: 30px !important; }
-  .btn-softdrop { display: none !important; }
+  .btn-softdrop {
+    display: block !important;
+    grid-area: down !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 18px !important;
+  }
   .btn-harddrop { grid-area: drop !important; min-height: 42px !important; height: 42px !important; font-size: 18px !important; }
   .btn-start,
   .btn-pause,
