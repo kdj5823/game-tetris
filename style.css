@@ -713,7 +713,7 @@ button:disabled {
   display: grid;
   width: min(92vw, 360px);
   margin: 8px auto 0;
-  gap: 4px !important;
+  gap: 3px !important;
   order: 1;
   user-select: none;
   -webkit-user-select: none;
@@ -721,8 +721,8 @@ button:disabled {
 
 .control-row {
   display: grid;
-  gap: 4px !important;
-  row-gap: 4px !important;
+  gap: 3px !important;
+  row-gap: 3px !important;
 }
 
 .hold-row { grid-template-columns: 1fr; }
@@ -736,6 +736,9 @@ button:disabled {
 .action-row {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 0 !important;
+}
+.game-controls .harddrop-row + .action-row {
+  margin-top: -1px !important;
 }
 
 .control-btn {
@@ -794,6 +797,7 @@ button:disabled {
   min-height: 42px;
   height: 42px;
   font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
 }
 .btn-start {
   background: linear-gradient(135deg, #22c55e, #16a34a);
@@ -971,7 +975,7 @@ button:disabled {
     width: min(92vw, 340px);
     margin: 0;
     grid-area: mcontrols;
-    gap: 4px;
+    gap: 3px !important;
     order: 1;
   }
 
@@ -1211,7 +1215,7 @@ body.mobile-device .game-controls {
   width: min(92vw, 340px);
   margin: 0;
   grid-area: mcontrols;
-  gap: 4px;
+  gap: 3px !important;
   order: 1;
 }
 
