@@ -26,6 +26,42 @@
         <div id="scorePopupLayer" class="score-popup-layer" aria-hidden="true"></div>
       </div>
 
+      <section class="mobile-status-panel" aria-label="Mobile status">
+        <p>
+          Score <span id="mobileScore">0</span>
+          <span class="sep">|</span>
+          Lines <span id="mobileLines">0</span>
+          <span class="sep">|</span>
+          Level <span id="mobileLevel">1</span>
+          <span class="sep">|</span>
+          Time <span id="mobileTime">0s</span>
+        </p>
+        <p>
+          Combo <span id="mobileCombo">0</span>
+          <span class="sep">|</span>
+          Last <span id="mobileLastScore">+0</span>
+        </p>
+      </section>
+
+      <section class="mobile-controls" aria-label="Mobile touch controls">
+        <div class="mobile-control-row mobile-control-row-2">
+          <button id="touchRotate" type="button">ROT</button>
+          <button id="touchHold" type="button">HOLD</button>
+        </div>
+        <div class="mobile-control-row mobile-control-row-3">
+          <button id="touchLeft" type="button">LEFT</button>
+          <button id="touchDown" type="button">DOWN</button>
+          <button id="touchRight" type="button">RIGHT</button>
+        </div>
+        <div class="mobile-control-row mobile-control-row-1">
+          <button id="touchDrop" type="button" class="touch-wide">DROP</button>
+        </div>
+        <div class="mobile-control-row mobile-control-row-2">
+          <button id="touchPause" type="button">PAUSE</button>
+          <button id="touchReset" type="button">RESET</button>
+        </div>
+      </section>
+
       <aside class="right-column">
         <div class="panel next-panel">
           <h2>NEXT</h2>
@@ -61,31 +97,6 @@
           </div>
         </div>
       </aside>
-    </section>
-
-    <section class="mobile-status-panel" aria-label="Mobile status">
-      <p>
-        Score <span id="mobileScore">0</span>
-        <span class="sep">|</span>
-        Lines <span id="mobileLines">0</span>
-        <span class="sep">|</span>
-        Level <span id="mobileLevel">1</span>
-      </p>
-      <p>
-        Combo <span id="mobileCombo">0</span>
-        <span class="sep">|</span>
-        Last <span id="mobileLastScore">+0</span>
-      </p>
-    </section>
-
-    <p class="mobile-gesture-hint">Tap: Rotate | Swipe L/R: Move | Swipe Down: Drop</p>
-
-    <section class="mobile-controls" aria-label="Mobile touch controls">
-      <div class="touch-grid-bottom">
-        <button id="touchHold" type="button">HOLD</button>
-        <button id="touchPause" type="button">PAUSE</button>
-        <button id="touchReset" type="button">RESET</button>
-      </div>
     </section>
 
     <section class="buttons">

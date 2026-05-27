@@ -1,7 +1,7 @@
 # game-tetris
 
 Pure HTML/CSS/JavaScript Tetris game.
-Supports both PC keyboard play and mobile gesture play.
+Supports both PC keyboard play and mobile touch-button play.
 
 ## Run
 
@@ -20,19 +20,14 @@ Supports both PC keyboard play and mobile gesture play.
 
 ## Mobile Controls
 
-Board gestures:
-
-- Tap: Rotate
-- Swipe left/right: Move
-- Swipe down: Soft drop
-- Fast long swipe down: Hard drop
-
-Support buttons:
-
-- `HOLD`
-- `PAUSE`
-- `RESET`
-- `Start`
+- `↻`: Rotate
+- `← / →`: Move left/right
+- `↓`: Soft drop
+- `DROP`: Hard drop
+- `HOLD`: Hold/swap piece
+- `PAUSE`: Pause/resume
+- `RESET`: Restart
+- `Start`: Start game
 
 ## Features
 

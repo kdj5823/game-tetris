@@ -18,6 +18,7 @@ const timeEl = document.getElementById("time");
 const mobileScoreEl = document.getElementById("mobileScore");
 const mobileLinesEl = document.getElementById("mobileLines");
 const mobileLevelEl = document.getElementById("mobileLevel");
+const mobileTimeEl = document.getElementById("mobileTime");
 const mobileComboEl = document.getElementById("mobileCombo");
 const mobileLastScoreEl = document.getElementById("mobileLastScore");
 const statusEl = document.getElementById("statusText");
@@ -89,7 +90,9 @@ let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
 let touchMoved = false;
-const TOUCH_DEBUG = true;
+const TOUCH_DEBUG = false;
+let activeTouchId = null;
+const ENABLE_BOARD_GESTURE_CONTROLS = false;
 
 const soundSettings = {
   sfxEnabled: true,
@@ -484,6 +487,7 @@ function renderStats() {
   if (mobileScoreEl) mobileScoreEl.textContent = String(score);
   if (mobileLinesEl) mobileLinesEl.textContent = String(lines);
   if (mobileLevelEl) mobileLevelEl.textContent = String(level);
+  if (mobileTimeEl) mobileTimeEl.textContent = `${Math.floor(gameTimeMs / 1000)}s`;
   if (mobileComboEl) mobileComboEl.textContent = String(comboCount);
   if (mobileLastScoreEl) mobileLastScoreEl.textContent = `+${lastScoreGain}`;
 }
@@ -1201,8 +1205,9 @@ function bindTouchAction(button, handler) {
 
 function handleBoardTouchStart(e) {
   e.preventDefault();
-  if (!e.touches || e.touches.length !== 1) return;
-  const t = e.touches[0];
+  if (!e.changedTouches || e.changedTouches.length < 1) return;
+  const t = e.changedTouches[0];
+  activeTouchId = t.identifier;
   touchStartX = t.clientX;
   touchStartY = t.clientY;
   touchStartTime = Date.now();
@@ -1215,17 +1220,33 @@ function handleBoardTouchStart(e) {
 
 function handleBoardTouchMove(e) {
   e.preventDefault();
-  if (!e.touches || e.touches.length !== 1) return;
-  const t = e.touches[0];
+  if (!e.touches || e.touches.length < 1) return;
+  let t = null;
+  for (let i = 0; i < e.touches.length; i += 1) {
+    if (activeTouchId === null || e.touches[i].identifier === activeTouchId) {
+      t = e.touches[i];
+      break;
+    }
+  }
+  if (!t) return;
   const dx = t.clientX - touchStartX;
   const dy = t.clientY - touchStartY;
-  if (Math.abs(dx) > 8 || Math.abs(dy) > 8) touchMoved = true;
+  if (Math.abs(dx) > 6 || Math.abs(dy) > 6) touchMoved = true;
 }
 
 function handleBoardTouchEnd(e) {
   e.preventDefault();
   if (!isRunning || isPaused || isGameOver) return;
-  const changed = e.changedTouches && e.changedTouches[0];
+  if (!e.changedTouches || e.changedTouches.length < 1) return;
+  let changed = null;
+  for (let i = 0; i < e.changedTouches.length; i += 1) {
+    if (activeTouchId === null || e.changedTouches[i].identifier === activeTouchId) {
+      changed = e.changedTouches[i];
+      break;
+    }
+  }
+  if (!changed) changed = e.changedTouches[0];
+  activeTouchId = null;
   if (!changed) return;
 
   const dx = changed.clientX - touchStartX;
@@ -1236,11 +1257,11 @@ function handleBoardTouchEnd(e) {
   if (TOUCH_DEBUG) console.log("[touch] end", { dx, dy, dt });
 
   const tapMaxDistance = 12;
-  const swipeThreshold = 25;
-  const downThreshold = 25;
+  const swipeThreshold = 18;
+  const downThreshold = 18;
   const hardDropThreshold = 80;
   const maxTapDuration = 250;
-  const fastSwipe = absY / dt > 0.9;
+  const fastSwipe = absY / dt > 0.75;
 
   if (!touchMoved || (absX < tapMaxDistance && absY < tapMaxDistance && dt < maxTapDuration)) {
     if (TOUCH_DEBUG) console.log("[touch] tap rotate");
@@ -1268,6 +1289,11 @@ function handleBoardTouchEnd(e) {
       actionMoveLeft();
     }
   }
+}
+
+function handleBoardTouchCancel(e) {
+  e.preventDefault();
+  activeTouchId = null;
 }
 
 function setupEvents() {
@@ -1343,9 +1369,15 @@ function setupEvents() {
   bindTouchAction(touchPauseBtn, togglePause);
   bindTouchAction(touchResetBtn, restartGame);
 
-  boardCanvas.addEventListener("touchstart", handleBoardTouchStart, { passive: false });
-  boardCanvas.addEventListener("touchmove", handleBoardTouchMove, { passive: false });
-  boardCanvas.addEventListener("touchend", handleBoardTouchEnd, { passive: false });
+  if (ENABLE_BOARD_GESTURE_CONTROLS) {
+    const boardGestureTargets = [boardWrap, boardCanvas].filter(Boolean);
+    boardGestureTargets.forEach((el) => {
+      el.addEventListener("touchstart", handleBoardTouchStart, { passive: false });
+      el.addEventListener("touchmove", handleBoardTouchMove, { passive: false });
+      el.addEventListener("touchend", handleBoardTouchEnd, { passive: false });
+      el.addEventListener("touchcancel", handleBoardTouchCancel, { passive: false });
+    });
+  }
 }
 
 function init() {

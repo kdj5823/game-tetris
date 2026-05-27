@@ -621,25 +621,14 @@ button:disabled {
 
 .mobile-controls {
   display: none;
-  margin-top: 12px;
   gap: 8px;
   user-select: none;
   -webkit-user-select: none;
 }
 
-.mobile-gesture-hint {
-  display: none;
-  width: min(90vw, 360px);
-  margin: 8px auto 0;
-  font-size: 11px;
-  color: var(--muted);
-  text-align: center;
-}
-
 .mobile-status-panel {
   display: none;
-  width: min(90vw, 360px);
-  margin: 10px auto 0;
+  width: min(92vw, 340px);
   padding: 8px 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -664,17 +653,14 @@ button:disabled {
   -webkit-tap-highlight-color: transparent;
 }
 
-.touch-grid-top,
-.touch-grid-mid,
-.touch-grid-bottom {
+.mobile-control-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
-.touch-grid-mid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
+.mobile-control-row-1 { grid-template-columns: 1fr; }
+.mobile-control-row-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mobile-control-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .touch-wide {
   width: 100%;
@@ -707,7 +693,9 @@ button:disabled {
     grid-template-areas:
       "hold next"
       "board board"
-      "info info";
+      "mstatus mstatus"
+      "mcontrols mcontrols"
+      "sound sound";
     gap: 10px;
     width: 100%;
     justify-items: center;
@@ -735,8 +723,8 @@ button:disabled {
 
   .board-wrap {
     grid-area: board;
-    width: min(90vw, 34vh);
-    height: min(68vh, calc(min(90vw, 34vh) * 2));
+    width: min(88vw, 30vh);
+    height: min(60vh, calc(min(88vw, 30vh) * 2));
     margin: 0;
     touch-action: none;
   }
@@ -762,9 +750,9 @@ button:disabled {
   }
 
   .side-panel {
-    grid-area: info;
+    grid-area: sound;
     width: 100%;
-    max-width: min(90vw, 340px);
+    max-width: min(92vw, 340px);
     gap: 6px;
     margin: 0 auto;
   }
@@ -788,30 +776,15 @@ button:disabled {
 
   .mobile-controls {
     display: grid;
-    width: min(90vw, 360px);
-    margin: 8px auto 0;
-  }
-
-  .mobile-controls .touch-grid-bottom {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  #touchRotate,
-  #touchLeft,
-  #touchDown,
-  #touchRight,
-  #touchDrop {
-    display: none;
-  }
-
-  .touch-grid-top,
-  .touch-grid-mid {
-    display: none;
+    grid-area: mcontrols;
+    width: min(92vw, 340px);
+    margin: 0;
   }
 
   .mobile-status-panel {
     display: block;
-    margin: 8px auto 0;
+    grid-area: mstatus;
+    margin: 0;
     padding: 7px 10px;
   }
 
@@ -819,12 +792,8 @@ button:disabled {
     font-size: 12px;
   }
 
-  .mobile-gesture-hint {
-    display: block;
-  }
-
   .buttons {
-    width: min(90vw, 360px);
+    width: min(92vw, 340px);
     margin: 8px auto 0;
   }
 
