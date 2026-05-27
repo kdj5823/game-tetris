@@ -714,6 +714,8 @@ button:disabled {
   width: min(92vw, 360px);
   margin: 8px auto 0;
   gap: 3px !important;
+  grid-auto-rows: min-content;
+  align-content: start;
   order: 1;
   user-select: none;
   -webkit-user-select: none;
@@ -730,15 +732,21 @@ button:disabled {
 .softdrop-row {
   grid-template-columns: 1fr;
   justify-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .harddrop-row { grid-template-columns: 1fr; }
-.game-controls .harddrop-row { margin-bottom: 0 !important; }
+.game-controls .harddrop-row {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .action-row {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .game-controls .harddrop-row + .action-row {
-  margin-top: -1px !important;
+  margin-top: -2px !important;
 }
 
 .control-btn {
@@ -798,6 +806,7 @@ button:disabled {
   height: 42px;
   font-size: 20px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
+  margin: 0 !important;
 }
 .btn-start {
   background: linear-gradient(135deg, #22c55e, #16a34a);
@@ -810,6 +819,8 @@ button:disabled {
 .btn-reset {
   min-height: 40px;
   height: 40px;
+  margin: 0 !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
 }
 
 .control-btn:active {
