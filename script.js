@@ -15,6 +15,11 @@ const scoreEl = document.getElementById("score");
 const linesEl = document.getElementById("lines");
 const levelEl = document.getElementById("level");
 const timeEl = document.getElementById("time");
+const mobileScoreEl = document.getElementById("mobileScore");
+const mobileLinesEl = document.getElementById("mobileLines");
+const mobileLevelEl = document.getElementById("mobileLevel");
+const mobileComboEl = document.getElementById("mobileCombo");
+const mobileLastScoreEl = document.getElementById("mobileLastScore");
 const statusEl = document.getElementById("statusText");
 const popupLayer = document.getElementById("scorePopupLayer");
 const boardWrap = document.getElementById("boardWrap");
@@ -28,6 +33,14 @@ const restartBtn = document.getElementById("restartBtn");
 const sfxToggle = document.getElementById("sfxToggle");
 const bgmToggle = document.getElementById("bgmToggle");
 const volumeSlider = document.getElementById("volume");
+const touchLeftBtn = document.getElementById("touchLeft");
+const touchRightBtn = document.getElementById("touchRight");
+const touchDownBtn = document.getElementById("touchDown");
+const touchRotateBtn = document.getElementById("touchRotate");
+const touchDropBtn = document.getElementById("touchDrop");
+const touchHoldBtn = document.getElementById("touchHold");
+const touchPauseBtn = document.getElementById("touchPause");
+const touchResetBtn = document.getElementById("touchReset");
 
 const COLORS = {
   I: "#35d7ff",
@@ -59,6 +72,7 @@ let score = 0;
 let lines = 0;
 let level = 1;
 let gameTimeMs = 0;
+let lastScoreGain = 0;
 
 let isRunning = false;
 let isPaused = false;
@@ -202,6 +216,7 @@ function clearLines() {
   }
   if (cleared > 0) {
     const gained = (SCORE_TABLE[cleared] || 0) * level;
+    lastScoreGain = gained;
     score += gained;
     lines += cleared;
     level = Math.floor(lines / 10) + 1;
@@ -210,6 +225,7 @@ function clearLines() {
     showLineClearPopup(cleared, gained);
     playLineClearImpactSound(cleared);
   } else {
+    lastScoreGain = 0;
     comboCount = 0;
   }
 }
@@ -256,6 +272,26 @@ function tryRotate() {
       return;
     }
   }
+}
+
+function actionMoveLeft() {
+  if (tryMove(-1, 0)) playSfxPattern([330], 0.05, "square");
+}
+
+function actionMoveRight() {
+  if (tryMove(1, 0)) playSfxPattern([330], 0.05, "square");
+}
+
+function actionSoftDrop() {
+  if (tryMove(0, 1)) playSfxPattern([180], 0.03, "square");
+}
+
+function actionRotate() {
+  tryRotate();
+}
+
+function actionHardDrop() {
+  hardDrop();
 }
 
 function hardDrop() {
@@ -440,6 +476,11 @@ function renderStats() {
   linesEl.textContent = String(lines);
   levelEl.textContent = String(level);
   timeEl.textContent = `${Math.floor(gameTimeMs / 1000)}s`;
+  if (mobileScoreEl) mobileScoreEl.textContent = String(score);
+  if (mobileLinesEl) mobileLinesEl.textContent = String(lines);
+  if (mobileLevelEl) mobileLevelEl.textContent = String(level);
+  if (mobileComboEl) mobileComboEl.textContent = String(comboCount);
+  if (mobileLastScoreEl) mobileLastScoreEl.textContent = `+${lastScoreGain}`;
 }
 
 function setStatus(message) {
@@ -1064,6 +1105,7 @@ function resetGameState() {
   gameTimeMs = 0;
   dropAccumulator = 0;
   comboCount = 0;
+  lastScoreGain = 0;
   heldType = null;
   canHold = true;
   isGameOver = false;
@@ -1134,6 +1176,24 @@ function gameLoop(timestamp) {
   requestAnimationFrame(gameLoop);
 }
 
+function bindTouchAction(button, handler) {
+  if (!button) return;
+  let consumedTouch = false;
+  button.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    consumedTouch = true;
+    handler();
+  }, { passive: false });
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (consumedTouch) {
+      consumedTouch = false;
+      return;
+    }
+    handler();
+  });
+}
+
 function setupEvents() {
   startBtn.addEventListener("click", startGame);
   pauseBtn.addEventListener("click", togglePause);
@@ -1178,15 +1238,15 @@ function setupEvents() {
     if (!isRunning || isPaused || isGameOver) return;
 
     if (k === "ArrowLeft") {
-      if (tryMove(-1, 0)) playSfxPattern([330], 0.05, "square");
+      actionMoveLeft();
     } else if (k === "ArrowRight") {
-      if (tryMove(1, 0)) playSfxPattern([330], 0.05, "square");
+      actionMoveRight();
     } else if (k === "ArrowDown") {
-      if (tryMove(0, 1)) playSfxPattern([180], 0.03, "square");
+      actionSoftDrop();
     } else if (k === "ArrowUp") {
-      tryRotate();
+      actionRotate();
     } else if (k === " ") {
-      hardDrop();
+      actionHardDrop();
     }
   });
 
@@ -1197,6 +1257,15 @@ function setupEvents() {
   window.addEventListener("keyup", (e) => {
     if (e.key === "ArrowDown") softDropPressed = false;
   });
+
+  bindTouchAction(touchLeftBtn, actionMoveLeft);
+  bindTouchAction(touchRightBtn, actionMoveRight);
+  bindTouchAction(touchDownBtn, actionSoftDrop);
+  bindTouchAction(touchRotateBtn, actionRotate);
+  bindTouchAction(touchDropBtn, actionHardDrop);
+  bindTouchAction(touchHoldBtn, holdCurrentPiece);
+  bindTouchAction(touchPauseBtn, togglePause);
+  bindTouchAction(touchResetBtn, restartGame);
 }
 
 function init() {
