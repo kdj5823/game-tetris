@@ -28,20 +28,20 @@ const holdPanel = document.getElementById("holdPanel");
 const holdStatusEl = document.getElementById("holdStatus");
 const holdEmptyTextEl = document.getElementById("holdEmptyText");
 
-const startBtn = document.getElementById("startBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const restartBtn = document.getElementById("restartBtn");
+const startBtn = document.getElementById("btn-start") || document.getElementById("startBtn");
+const pauseBtn = document.getElementById("btn-pause") || document.getElementById("pauseBtn");
+const restartBtn = document.getElementById("btn-reset") || document.getElementById("restartBtn");
 const sfxToggle = document.getElementById("sfxToggle");
 const bgmToggle = document.getElementById("bgmToggle");
 const volumeSlider = document.getElementById("volume");
-const touchLeftBtn = document.getElementById("touchLeft");
-const touchRightBtn = document.getElementById("touchRight");
-const touchDownBtn = document.getElementById("touchDown");
-const touchHoldBtn = document.getElementById("touchHold");
-const touchPauseBtn = document.getElementById("touchPause");
-const touchResetBtn = document.getElementById("touchReset");
-const touchRotateBtn = document.getElementById("touchRotate");
-const touchDropBtn = document.getElementById("touchDrop");
+const touchLeftBtn = document.getElementById("btn-left") || document.getElementById("touchLeft");
+const touchRightBtn = document.getElementById("btn-right") || document.getElementById("touchRight");
+const touchDownBtn = document.getElementById("btn-down") || document.getElementById("touchDown");
+const touchHoldBtn = document.getElementById("btn-hold") || document.getElementById("touchHold");
+const touchPauseBtn = document.getElementById("btn-pause") || document.getElementById("touchPause");
+const touchResetBtn = document.getElementById("btn-reset") || document.getElementById("touchReset");
+const touchRotateBtn = document.getElementById("btn-rotate") || document.getElementById("touchRotate");
+const touchDropBtn = document.getElementById("btn-drop") || document.getElementById("touchDrop");
 
 const COLORS = {
   I: "#35d7ff",

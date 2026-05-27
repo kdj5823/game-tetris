@@ -21,14 +21,14 @@ Supports both PC keyboard play and mobile touch-button play.
 
 ## Mobile Controls
 
-- `↻`: Rotate
-- `H`: Hold
-- `← / →`: Move left/right
-- `↓`: Soft drop
-- `⤓`: Hard drop
-- `Ⅱ`: Pause / Resume
-- `↺`: Restart
-- `▶`: Start
+- `HOLD`: 블록 보관
+- `← / →`: 좌우 이동
+- `▲`: 회전
+- `▼`: 빠른 하강
+- `▼▼`: 드랍(즉시 떨어뜨리기)
+- `▶`: 시작
+- `Ⅱ`: 일시정지
+- `↺`: 재시작
 
 ## Features
 

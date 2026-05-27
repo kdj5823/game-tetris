@@ -80,29 +80,30 @@
       </aside>
     </section>
 
-    <section class="mobile-controls game-controls" aria-label="Touch controls">
-      <div class="mobile-control-row mobile-control-row-2">
-        <button id="touchRotate" type="button" class="control-btn rotate" title="Rotate" aria-label="Rotate">&#x21BB;</button>
-        <button id="touchHold" type="button" class="control-btn hold" title="Hold" aria-label="Hold">H</button>
+    <section class="game-controls" aria-label="Game controls">
+      <div class="control-row hold-row">
+        <button id="btn-hold" type="button" class="control-btn btn-hold" aria-label="Hold" title="Hold">HOLD</button>
       </div>
-      <div class="mobile-control-row mobile-control-row-3">
-        <button id="touchLeft" type="button" class="control-btn move" title="Move left" aria-label="Move left">&#x2190;</button>
-        <button id="touchDown" type="button" class="control-btn move" title="Soft drop" aria-label="Soft drop">&#x2193;</button>
-        <button id="touchRight" type="button" class="control-btn move" title="Move right" aria-label="Move right">&#x2192;</button>
-      </div>
-      <div class="mobile-control-row mobile-control-row-1">
-        <button id="touchDrop" type="button" class="control-btn drop touch-wide" title="Hard drop" aria-label="Hard drop">&#x2913;</button>
-      </div>
-      <div class="mobile-control-row mobile-control-row-2">
-        <button id="touchPause" type="button" class="control-btn pause" title="Pause" aria-label="Pause">&#x2161;</button>
-        <button id="touchReset" type="button" class="control-btn reset" title="Reset" aria-label="Reset">&#x21BA;</button>
-      </div>
-    </section>
 
-    <section class="buttons">
-      <button id="startBtn" type="button" class="control-btn start" title="Start" aria-label="Start">&#x25B6;</button>
-      <button id="pauseBtn" type="button" class="control-btn pause" title="Pause" aria-label="Pause">&#x2161;</button>
-      <button id="restartBtn" type="button" class="control-btn reset" title="Reset" aria-label="Reset">&#x21BA;</button>
+      <div class="control-row move-row">
+        <button id="btn-left" type="button" class="control-btn btn-move" aria-label="Move left" title="Move left">&#x2190;</button>
+        <button id="btn-rotate" type="button" class="control-btn btn-rotate" aria-label="Rotate" title="Rotate">&#x25B2;</button>
+        <button id="btn-right" type="button" class="control-btn btn-move" aria-label="Move right" title="Move right">&#x2192;</button>
+      </div>
+
+      <div class="control-row softdrop-row">
+        <button id="btn-down" type="button" class="control-btn btn-softdrop" aria-label="Soft drop" title="Soft drop">&#x25BC;</button>
+      </div>
+
+      <div class="control-row harddrop-row">
+        <button id="btn-drop" type="button" class="control-btn btn-harddrop" aria-label="Hard drop" title="Hard drop">&#x25BC;&#x25BC;</button>
+      </div>
+
+      <div class="control-row action-row">
+        <button id="btn-start" type="button" class="control-btn btn-start" aria-label="Start" title="Start">&#x25B6;</button>
+        <button id="btn-pause" type="button" class="control-btn btn-pause" aria-label="Pause" title="Pause">&#x2161;</button>
+        <button id="btn-reset" type="button" class="control-btn btn-reset" aria-label="Restart" title="Restart">&#x21BA;</button>
+      </div>
     </section>
 
     <p id="statusText" class="status-text">Press Start to begin.</p>
