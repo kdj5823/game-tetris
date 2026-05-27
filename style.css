@@ -1946,6 +1946,145 @@ body.mobile-device .app {
   box-sizing: border-box !important;
 }
 
+/* Final control panel layout (PC + mobile shared structure) */
+.game-controls {
+  display: grid !important;
+  width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  gap: 5px !important;
+  padding: 0 !important;
+}
+
+.game-controls .control-row {
+  display: grid !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 5px !important;
+  min-height: 0 !important;
+}
+
+.game-controls .top-action-row {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.game-controls .move-row {
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.game-controls .harddrop-row {
+  grid-template-columns: 1fr !important;
+}
+
+.game-controls .action-row {
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.game-controls .btn-hold,
+.game-controls .btn-rotate {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+.game-controls .btn-left,
+.game-controls .btn-softdrop,
+.game-controls .btn-right {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+.game-controls .btn-left,
+.game-controls .btn-right {
+  font-size: 28px !important;
+}
+
+.game-controls .btn-softdrop {
+  width: 100% !important;
+  min-width: 0 !important;
+  font-size: 20px !important;
+}
+
+.game-controls .btn-harddrop {
+  height: 42px !important;
+  min-height: 42px !important;
+  font-size: 16px !important;
+}
+
+.game-controls .btn-start,
+.game-controls .btn-pause,
+.game-controls .btn-reset {
+  height: 40px !important;
+  min-height: 40px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 768px) {
+  .game-controls {
+    width: min(92vw, 340px) !important;
+    margin: 8px auto 0 !important;
+    gap: 4px !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  .game-controls .control-row {
+    gap: 4px !important;
+  }
+
+  .game-controls .btn-hold,
+  .game-controls .btn-rotate,
+  .game-controls .btn-left,
+  .game-controls .btn-softdrop,
+  .game-controls .btn-right {
+    height: 42px !important;
+    min-height: 42px !important;
+  }
+
+  .game-controls .btn-harddrop {
+    height: 42px !important;
+    min-height: 42px !important;
+  }
+
+  .game-controls .btn-start,
+  .game-controls .btn-pause,
+  .game-controls .btn-reset {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+}
+
+body.mobile-device .game-controls {
+  width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  gap: 4px !important;
+  position: static !important;
+  transform: none !important;
+}
+
+body.mobile-device .game-controls .control-row {
+  gap: 4px !important;
+}
+
+body.mobile-device .game-controls .btn-hold,
+body.mobile-device .game-controls .btn-rotate,
+body.mobile-device .game-controls .btn-left,
+body.mobile-device .game-controls .btn-softdrop,
+body.mobile-device .game-controls .btn-right {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+body.mobile-device .game-controls .btn-harddrop {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+body.mobile-device .game-controls .btn-start,
+body.mobile-device .game-controls .btn-pause,
+body.mobile-device .game-controls .btn-reset {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
 /* Mobile layout recovery: HOLD / STATUS / NEXT on top, board, controls */
 @media (max-width: 768px) {
   .title {

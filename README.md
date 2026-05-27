@@ -1,41 +1,38 @@
 # game-tetris
 
-Pure HTML/CSS/JavaScript Tetris game.
-Supports both PC keyboard play and mobile touch-button play.
+HTML/CSS/JavaScript로 만든 테트리스 게임입니다.
 
-## Run
+## 실행 방법
 
-1. Open `index.html` in a browser.
-2. Press `Start`.
+1. `index.html`을 브라우저에서 엽니다.
+2. `시작` 버튼을 누릅니다.
 
-## PC Controls
+## PC 조작
 
-- `Left / Right`: Move
-- `Down`: Soft drop
-- `Up`: Rotate
-- `Space`: Hard drop
-- `C` or `Shift`: Hold
-- `P`: Pause / Resume
-- `R`: Restart
-- On-screen control buttons are also available.
-
-## Mobile Controls
-
-- `HOLD`: 블록 보관
 - `← / →`: 좌우 이동
-- `▲`: 회전
+- `↓`: 빠른 하강
+- `↑`: 회전
+- `Space`: 즉시낙하
+- `C` 또는 `Shift`: 보관(Hold)
+- `P`: 일시정지 / 재개
+- `R`: 다시하기
+
+## 모바일 버튼 조작
+
+- `보관`: 블록 보관
+- `◀ / ▶`: 좌우 이동
+- `회전`: 회전
 - `▼`: 빠른 하강
-- `▼▼`: 드랍(즉시 떨어뜨리기)
-- `▶`: 시작
-- `Ⅱ`: 일시정지
-- `↺`: 재시작
+- `즉시낙하`: 하드 드롭
+- `시작`: 게임 시작
+- `일시정지`: 일시정지 / 재개
+- `다시하기`: 재시작
 
-## Features
+## 주요 기능
 
-- 10x20 board, 7 tetrominoes
-- Hold / Next preview
-- Score / Lines / Level / Combo
-- Double / Triple / Tetris / Combo popups
-- Web Audio API SFX + BGM
-- SFX/BGM/Volume settings with localStorage
-- Responsive UI for PC and mobile
+- 10x20 보드, 7종 테트로미노
+- Hold / Next 미리보기
+- 점수 / 줄 수 / 레벨 / 콤보
+- Double / Triple / Tetris / Combo 팝업
+- Web Audio API 효과음 + 배경음
+- SFX/BGM/볼륨 설정(localStorage 저장)
