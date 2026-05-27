@@ -69,13 +69,6 @@
             <p>R: Restart</p>
           </div>
 
-          <div class="panel sound-settings">
-            <h2>SOUND</h2>
-            <label><input type="checkbox" id="sfxToggle"> SFX ON</label>
-            <label><input type="checkbox" id="bgmToggle"> BGM ON</label>
-            <label for="volume">Master Volume</label>
-            <input type="range" id="volume" min="0" max="100" step="1">
-          </div>
         </div>
       </aside>
     </section>
@@ -86,9 +79,9 @@
       </div>
 
       <div class="control-row move-row">
-        <button id="btn-left" type="button" class="control-btn btn-move" aria-label="Move left" title="Move left">&#x2190;</button>
+        <button id="btn-left" type="button" class="control-btn btn-move btn-left" aria-label="Move left" title="Move left">&#x2190;</button>
         <button id="btn-rotate" type="button" class="control-btn btn-rotate" aria-label="Rotate" title="Rotate">&#x25B2;</button>
-        <button id="btn-right" type="button" class="control-btn btn-move" aria-label="Move right" title="Move right">&#x2192;</button>
+        <button id="btn-right" type="button" class="control-btn btn-move btn-right" aria-label="Move right" title="Move right">&#x2192;</button>
       </div>
 
       <div class="control-row softdrop-row">
@@ -104,6 +97,14 @@
         <button id="btn-pause" type="button" class="control-btn btn-pause" aria-label="Pause" title="Pause">&#x2161;</button>
         <button id="btn-reset" type="button" class="control-btn btn-reset" aria-label="Restart" title="Restart">&#x21BA;</button>
       </div>
+    </section>
+
+    <section class="panel sound-settings bottom-sound-panel sound-panel" aria-label="Sound settings">
+      <h2>SOUND</h2>
+      <label><input type="checkbox" id="sfxToggle"> SFX ON</label>
+      <label><input type="checkbox" id="bgmToggle"> BGM ON</label>
+      <label for="volume">Master Volume</label>
+      <input type="range" id="volume" min="0" max="100" step="1">
     </section>
 
     <p id="statusText" class="status-text">Press Start to begin.</p>

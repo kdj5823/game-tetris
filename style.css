@@ -712,15 +712,16 @@ button:disabled {
 .game-controls {
   display: grid;
   width: min(92vw, 360px);
-  margin: 12px auto 0;
-  gap: 8px;
+  margin: 8px auto 0;
+  gap: 5px;
+  order: 1;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .control-row {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .hold-row { grid-template-columns: 1fr; }
@@ -735,29 +736,45 @@ button:disabled {
 .control-btn {
   color: #ffffff;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 18px;
   border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 14px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-  min-height: 42px;
-  padding: 8px 12px;
+  min-height: 38px;
+  padding: 6px 10px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
 
-.btn-hold { background: linear-gradient(135deg, #21b6ad, #14968f); }
+.btn-hold {
+  background: linear-gradient(135deg, #21b6ad, #14968f);
+  min-height: 42px;
+}
 .btn-move { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
 .btn-rotate { background: linear-gradient(135deg, #ff6b2d, #f04e23); }
+.btn-left,
+.btn-right {
+  height: 88px;
+  min-height: 88px;
+  font-size: 28px;
+}
+.btn-rotate#btn-rotate {
+  min-height: 38px;
+  height: 38px;
+}
 .btn-softdrop {
   background: linear-gradient(135deg, #3b82f6, #2563eb);
-  width: 34%;
+  width: 30%;
   min-width: 92px;
+  min-height: 38px;
+  height: 38px;
 }
 .btn-harddrop {
   background: linear-gradient(135deg, #ff6a21, #ff4d1f);
-  min-height: 50px;
-  font-size: 24px;
+  min-height: 42px;
+  height: 42px;
+  font-size: 20px;
 }
 .btn-start {
   background: linear-gradient(135deg, #22c55e, #16a34a);
@@ -765,10 +782,22 @@ button:disabled {
 }
 .btn-pause { background: linear-gradient(135deg, #64748b, #475569); }
 .btn-reset { background: linear-gradient(135deg, #ec4899, #db2777); }
+.btn-start,
+.btn-pause,
+.btn-reset {
+  min-height: 40px;
+  height: 40px;
+}
 
 .control-btn:active {
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.26);
+}
+
+.bottom-sound-panel {
+  width: min(92vw, 360px);
+  margin: 8px auto 0;
+  order: 2;
 }
 
 @media (max-width: 768px) {
@@ -923,6 +952,8 @@ button:disabled {
     width: min(92vw, 340px);
     margin: 0;
     grid-area: mcontrols;
+    gap: 4px;
+    order: 1;
   }
 
   .mobile-controls button {
@@ -935,9 +966,15 @@ button:disabled {
 
   .buttons { display: none; }
 
-  .status-text {
+  .bottom-sound-panel {
     width: min(92vw, 340px);
     margin: 6px auto 0;
+    order: 2;
+  }
+
+  .status-text {
+    width: min(92vw, 340px);
+    margin: 5px auto 0;
     text-align: center;
     font-size: 11px;
   }
@@ -988,13 +1025,19 @@ button:disabled {
     min-height: 44px;
   }
 
-  .control-btn {
-    min-height: 46px;
+  .btn-left,
+  .btn-right {
+    min-height: 82px;
+    height: 82px;
   }
-
   .btn-harddrop {
-    min-height: 52px;
+    min-height: 42px;
+    height: 42px;
   }
+  .btn-hold {
+    min-height: 42px;
+  }
+  .bottom-sound-panel { width: min(94vw, 320px); }
 }
 
 body.mobile-device {
@@ -1148,6 +1191,8 @@ body.mobile-device .game-controls {
   width: min(92vw, 340px);
   margin: 0;
   grid-area: mcontrols;
+  gap: 4px;
+  order: 1;
 }
 
 body.mobile-device .mobile-controls button {
@@ -1165,4 +1210,10 @@ body.mobile-device .status-text {
   margin: 6px auto 0;
   text-align: center;
   font-size: 11px;
+}
+
+body.mobile-device .bottom-sound-panel {
+  width: min(92vw, 340px);
+  margin: 6px auto 0;
+  order: 2;
 }
