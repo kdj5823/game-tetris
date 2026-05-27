@@ -1789,3 +1789,228 @@ body.mobile-device .status-text {
   margin: 2px 0 !important;
   font-size: 11px !important;
 }
+
+/* Mobile layout recovery: HOLD / STATUS / NEXT on top, board, controls */
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px !important;
+    margin: 6px 0 !important;
+    text-align: center !important;
+  }
+
+  .game-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-areas:
+      "hold status next"
+      "board board board" !important;
+    width: min(94vw, 360px) !important;
+    max-width: min(94vw, 360px) !important;
+    margin: 0 auto !important;
+    gap: 6px !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+  }
+
+  .hold-column {
+    grid-area: hold !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .mobile-status-panel {
+    grid-area: status !important;
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    height: 92px !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  .mobile-status-panel p {
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+    margin: 2px 0 !important;
+  }
+
+  .right-column {
+    display: contents !important;
+  }
+
+  .next-panel {
+    grid-area: next !important;
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    height: 92px !important;
+    padding: 6px !important;
+    margin: 0 !important;
+  }
+
+  .hold-panel {
+    width: auto !important;
+    min-width: 0 !important;
+    height: 92px !important;
+    min-height: 92px !important;
+    padding: 6px !important;
+  }
+
+  .hold-preview-box {
+    width: 54px !important;
+    height: 54px !important;
+    margin: 4px auto 0 !important;
+  }
+
+  #hold,
+  #next {
+    width: 54px !important;
+    height: 54px !important;
+    margin: 4px auto 0 !important;
+  }
+
+  .board-wrap {
+    grid-area: board !important;
+    width: min(58vw, 230px) !important;
+    height: calc(min(58vw, 230px) * 2) !important;
+    max-width: 88vw !important;
+    margin: 0 auto 8px !important;
+  }
+
+  .game-controls {
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    z-index: auto !important;
+    width: min(92vw, 340px) !important;
+    margin: 8px auto 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .keys-panel,
+  .sound-panel,
+  .bottom-sound-panel,
+  .side-panel,
+  .stats,
+  .controls,
+  .sound-settings {
+    display: none !important;
+  }
+}
+
+body.mobile-device .title {
+  font-size: 20px !important;
+  margin: 6px 0 !important;
+  text-align: center !important;
+}
+
+body.mobile-device .game-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-template-areas:
+    "hold status next"
+    "board board board" !important;
+  width: min(94vw, 360px) !important;
+  max-width: min(94vw, 360px) !important;
+  margin: 0 auto !important;
+  gap: 6px !important;
+  align-items: stretch !important;
+  justify-items: stretch !important;
+}
+
+body.mobile-device .hold-column {
+  grid-area: hold !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body.mobile-device .mobile-status-panel {
+  grid-area: status !important;
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 92px !important;
+  padding: 6px !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+body.mobile-device .mobile-status-panel p {
+  font-size: 10px !important;
+  line-height: 1.25 !important;
+  margin: 2px 0 !important;
+}
+
+body.mobile-device .right-column {
+  display: contents !important;
+}
+
+body.mobile-device .next-panel {
+  grid-area: next !important;
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 92px !important;
+  padding: 6px !important;
+  margin: 0 !important;
+}
+
+body.mobile-device .hold-panel {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 92px !important;
+  min-height: 92px !important;
+  padding: 6px !important;
+}
+
+body.mobile-device .hold-preview-box {
+  width: 54px !important;
+  height: 54px !important;
+  margin: 4px auto 0 !important;
+}
+
+body.mobile-device #hold,
+body.mobile-device #next {
+  width: 54px !important;
+  height: 54px !important;
+  margin: 4px auto 0 !important;
+}
+
+body.mobile-device .board-wrap {
+  grid-area: board !important;
+  width: min(58vw, 230px) !important;
+  height: calc(min(58vw, 230px) * 2) !important;
+  max-width: 88vw !important;
+  margin: 0 auto 8px !important;
+}
+
+body.mobile-device .game-controls {
+  position: static !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.mobile-device .keys-panel,
+body.mobile-device .sound-panel,
+body.mobile-device .bottom-sound-panel,
+body.mobile-device .side-panel,
+body.mobile-device .stats,
+body.mobile-device .controls,
+body.mobile-device .sound-settings {
+  display: none !important;
+}
