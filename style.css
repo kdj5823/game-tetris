@@ -1723,3 +1723,69 @@ body.mobile-device #board {
 body.mobile-device .game-controls {
   width: min(92vw, 340px) !important;
 }
+
+/* Final spacing stabilization for mobile browser chrome (address bar) */
+@media (max-width: 768px) {
+  .app {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+  }
+
+  body {
+    padding-bottom: 155px !important;
+  }
+
+  .app {
+    padding-bottom: 155px !important;
+  }
+
+  .board-wrap {
+    margin-bottom: 8px !important;
+    height: min(46vh, calc(min(58vw, 230px) * 2)) !important;
+  }
+
+  .game-layout {
+    gap: 6px !important;
+  }
+
+  .game-controls {
+    bottom: 0 !important;
+    margin-top: 0 !important;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .status-text {
+    margin: 2px 0 !important;
+    font-size: 11px !important;
+  }
+}
+
+body.mobile-device .app {
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  padding-bottom: 155px !important;
+}
+
+body.mobile-device {
+  padding-bottom: 155px !important;
+}
+
+body.mobile-device .board-wrap {
+  margin-bottom: 8px !important;
+  height: min(46vh, calc(min(58vw, 230px) * 2)) !important;
+}
+
+body.mobile-device .game-layout {
+  gap: 6px !important;
+}
+
+body.mobile-device .game-controls {
+  bottom: 0 !important;
+  margin-top: 0 !important;
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+body.mobile-device .status-text {
+  margin: 2px 0 !important;
+  font-size: 11px !important;
+}
