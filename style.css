@@ -670,7 +670,7 @@ button:disabled {
   body {
     overflow-x: hidden;
     align-items: flex-start;
-    padding: 8px 10px 10px;
+    padding: 6px 8px 8px;
     touch-action: manipulation;
     -webkit-user-select: none;
     user-select: none;
@@ -683,48 +683,41 @@ button:disabled {
 
   .title {
     text-align: center;
-    margin-bottom: 6px;
-    font-size: 24px;
+    margin-bottom: 4px;
+    font-size: 22px;
   }
 
   .game-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas:
-      "hold next"
-      "board board"
-      "mstatus mstatus"
-      "mcontrols mcontrols"
-      "sound sound";
-    gap: 10px;
+      "hold mstatus next"
+      "board board board"
+      "mcontrols mcontrols mcontrols"
+      "sound sound sound";
+    gap: 8px;
     width: 100%;
     justify-items: center;
+    align-items: start;
   }
 
   .hold-column {
     grid-area: hold;
     width: 100%;
-    max-width: 168px;
-    justify-self: end;
+    max-width: 108px;
+    justify-self: center;
     margin: 0;
+    flex: none;
   }
 
   .right-column {
-    grid-area: next;
-    width: 100%;
-    max-width: 168px;
-    justify-self: start;
-  }
-
-  .right-column .side-panel {
-    width: 100%;
-    margin: 0;
+    display: contents;
   }
 
   .board-wrap {
     grid-area: board;
-    width: min(88vw, 30vh);
-    height: min(60vh, calc(min(88vw, 30vh) * 2));
+    width: min(88vw, 28vh);
+    height: min(56vh, calc(min(88vw, 28vh) * 2));
     margin: 0;
     touch-action: none;
   }
@@ -734,79 +727,110 @@ button:disabled {
     height: 100%;
   }
 
-  .right-column {
-    display: contents;
+  .next-panel {
+    grid-area: next;
+    width: 100%;
+    max-width: 108px;
+    padding: 8px;
   }
 
-  .next-panel {
-    width: 100%;
-    max-width: 150px;
+  .next-panel h2 {
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-align: center;
   }
 
   #next,
   #hold {
-    width: 68px;
-    height: 68px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .mobile-status-panel {
+    display: block;
+    grid-area: mstatus;
+    width: 100%;
+    max-width: 116px;
+    margin: 0;
+    padding: 6px;
+  }
+
+  .mobile-status-panel p {
+    font-size: 10px;
+    line-height: 1.25;
+    margin: 2px 0;
+  }
+
+  .mobile-status-panel .sep {
+    margin: 0 2px;
+  }
+
+  .hold-panel {
+    min-height: 124px;
+    padding: 8px;
+  }
+
+  .hold-header {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .hold-empty {
+    font-size: 10px;
+    margin-top: 6px;
   }
 
   .side-panel {
     grid-area: sound;
     width: 100%;
     max-width: min(92vw, 340px);
-    gap: 6px;
-    margin: 0 auto;
+    gap: 8px;
+    margin: 0;
   }
 
-  .stats {
-    display: none;
-  }
-
+  .stats,
   .controls {
-    display: none;
-  }
-
-  .sound-settings label,
-  .stats p {
-    font-size: 12px;
+    display: none !important;
   }
 
   .sound-settings {
     padding: 8px 10px;
   }
 
+  .sound-settings h2 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .sound-settings label {
+    font-size: 12px;
+  }
+
   .mobile-controls {
-    display: grid;
-    grid-area: mcontrols;
+    display: grid !important;
+    grid-area: mcontrols !important;
     width: min(92vw, 340px);
     margin: 0;
+    gap: 8px;
   }
 
-  .mobile-status-panel {
-    display: block;
-    grid-area: mstatus;
-    margin: 0;
-    padding: 7px 10px;
-  }
-
-  .mobile-status-panel p {
-    font-size: 12px;
+  .mobile-controls button {
+    min-height: 46px;
+    padding: 8px 10px;
+    font-size: 14px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .buttons {
-    width: min(92vw, 340px);
-    margin: 8px auto 0;
-  }
-
-  .buttons button {
-    min-height: 46px;
-    flex: 1;
+    display: none;
   }
 
   .status-text {
-    width: min(90vw, 360px);
-    margin: 8px auto 0;
+    width: min(92vw, 340px);
+    margin: 6px auto 0;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .score-popup,
@@ -817,19 +841,32 @@ button:disabled {
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
   .game-layout {
-    gap: 8px;
+    gap: 6px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .hold-column,
   .next-panel {
-    max-width: 138px;
+    max-width: 96px;
   }
 
   #next,
   #hold {
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .mobile-status-panel {
+    max-width: 106px;
+  }
+
+  .mobile-controls {
+    width: min(94vw, 320px);
   }
 
   .mobile-controls button {
