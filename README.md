@@ -17,17 +17,18 @@ Supports both PC keyboard play and mobile touch-button play.
 - `C` or `Shift`: Hold
 - `P`: Pause / Resume
 - `R`: Restart
+- On-screen control buttons are also available.
 
 ## Mobile Controls
 
-- `↻`: 회전
-- `← / →`: 좌우 이동
-- `↓`: 빠른 하강
-- `DROP`: 즉시 떨어뜨리기
-- `HOLD`: 블록 보관 / 교체
-- `PAUSE`: 일시정지 / 재개
-- `RESET`: 재시작
-- `Start`: 게임 시작
+- `↻`: Rotate
+- `H`: Hold
+- `← / →`: Move left/right
+- `↓`: Soft drop
+- `⤓`: Hard drop
+- `Ⅱ`: Pause / Resume
+- `↺`: Restart
+- `▶`: Start
 
 ## Features
 

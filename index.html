@@ -43,25 +43,6 @@
         </p>
       </section>
 
-      <section class="mobile-controls" aria-label="Mobile touch controls">
-        <div class="mobile-control-row mobile-control-row-2">
-          <button id="touchRotate" type="button">ROT</button>
-          <button id="touchHold" type="button">HOLD</button>
-        </div>
-        <div class="mobile-control-row mobile-control-row-3">
-          <button id="touchLeft" type="button">LEFT</button>
-          <button id="touchDown" type="button">DOWN</button>
-          <button id="touchRight" type="button">RIGHT</button>
-        </div>
-        <div class="mobile-control-row mobile-control-row-1">
-          <button id="touchDrop" type="button" class="touch-wide">DROP</button>
-        </div>
-        <div class="mobile-control-row mobile-control-row-2">
-          <button id="touchPause" type="button">PAUSE</button>
-          <button id="touchReset" type="button">RESET</button>
-        </div>
-      </section>
-
       <aside class="right-column">
         <div class="panel next-panel">
           <h2>NEXT</h2>
@@ -77,7 +58,7 @@
             <p>Time: <span id="time">0s</span></p>
           </div>
 
-          <div class="panel controls">
+          <div class="panel controls keys-panel">
             <h2>KEYS</h2>
             <p>Left / Right: Move</p>
             <p>Down: Soft Drop</p>
@@ -99,10 +80,29 @@
       </aside>
     </section>
 
+    <section class="mobile-controls game-controls" aria-label="Touch controls">
+      <div class="mobile-control-row mobile-control-row-2">
+        <button id="touchRotate" type="button" class="control-btn rotate" title="Rotate" aria-label="Rotate">&#x21BB;</button>
+        <button id="touchHold" type="button" class="control-btn hold" title="Hold" aria-label="Hold">H</button>
+      </div>
+      <div class="mobile-control-row mobile-control-row-3">
+        <button id="touchLeft" type="button" class="control-btn move" title="Move left" aria-label="Move left">&#x2190;</button>
+        <button id="touchDown" type="button" class="control-btn move" title="Soft drop" aria-label="Soft drop">&#x2193;</button>
+        <button id="touchRight" type="button" class="control-btn move" title="Move right" aria-label="Move right">&#x2192;</button>
+      </div>
+      <div class="mobile-control-row mobile-control-row-1">
+        <button id="touchDrop" type="button" class="control-btn drop touch-wide" title="Hard drop" aria-label="Hard drop">&#x2913;</button>
+      </div>
+      <div class="mobile-control-row mobile-control-row-2">
+        <button id="touchPause" type="button" class="control-btn pause" title="Pause" aria-label="Pause">&#x2161;</button>
+        <button id="touchReset" type="button" class="control-btn reset" title="Reset" aria-label="Reset">&#x21BA;</button>
+      </div>
+    </section>
+
     <section class="buttons">
-      <button id="startBtn" type="button">Start</button>
-      <button id="pauseBtn" type="button">Pause</button>
-      <button id="restartBtn" type="button">Restart</button>
+      <button id="startBtn" type="button" class="control-btn start" title="Start" aria-label="Start">&#x25B6;</button>
+      <button id="pauseBtn" type="button" class="control-btn pause" title="Pause" aria-label="Pause">&#x2161;</button>
+      <button id="restartBtn" type="button" class="control-btn reset" title="Reset" aria-label="Reset">&#x21BA;</button>
     </section>
 
     <p id="statusText" class="status-text">Press Start to begin.</p>

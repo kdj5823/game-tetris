@@ -620,7 +620,9 @@ button:disabled {
 }
 
 .mobile-controls {
-  display: none;
+  display: grid;
+  width: 300px;
+  margin: 12px auto 0;
   gap: 8px;
   user-select: none;
   -webkit-user-select: none;
@@ -648,9 +650,50 @@ button:disabled {
 }
 
 .mobile-controls button {
-  min-height: 46px;
+  min-height: 40px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn {
+  color: #fff;
+  font-weight: 900;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.28);
+}
+
+.control-btn.move {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.control-btn.rotate {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+
+.control-btn.drop {
+  background: linear-gradient(135deg, #f97316, #dc2626);
+}
+
+.control-btn.hold {
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+}
+
+.control-btn.start {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+}
+
+.control-btn.pause {
+  background: linear-gradient(135deg, #64748b, #475569);
+}
+
+.control-btn.reset {
+  background: linear-gradient(135deg, #ec4899, #be123c);
+}
+
+.control-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.24);
 }
 
 .mobile-control-row {
@@ -808,7 +851,7 @@ button:disabled {
 
   .mobile-controls {
     display: grid !important;
-    grid-area: mcontrols !important;
+    grid-area: mcontrols;
     width: min(92vw, 340px);
     margin: 0;
     gap: 8px;
@@ -822,9 +865,7 @@ button:disabled {
     -webkit-tap-highlight-color: transparent;
   }
 
-  .buttons {
-    display: none;
-  }
+  .buttons { display: flex; }
 
   .status-text {
     width: min(92vw, 340px);
@@ -1017,7 +1058,7 @@ body.mobile-device .sound-settings label {
 
 body.mobile-device .mobile-controls {
   display: grid !important;
-  grid-area: mcontrols !important;
+  grid-area: mcontrols;
   width: min(92vw, 340px);
   margin: 0;
   gap: 8px;
@@ -1031,9 +1072,7 @@ body.mobile-device .mobile-controls button {
   -webkit-tap-highlight-color: transparent;
 }
 
-body.mobile-device .buttons {
-  display: none;
-}
+body.mobile-device .buttons { display: flex; }
 
 body.mobile-device .status-text {
   width: min(92vw, 340px);
