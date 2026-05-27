@@ -1252,3 +1252,122 @@ body.mobile-device .bottom-sound-panel {
   margin: 6px auto 0;
   order: 2;
 }
+
+/* Mobile fixed control dock override */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden !important;
+    padding-bottom: 220px !important;
+  }
+
+  .app {
+    padding-bottom: 220px !important;
+  }
+
+  .board-wrap {
+    width: min(88vw, 24vh) !important;
+    height: min(48vh, calc(min(88vw, 24vh) * 2)) !important;
+    max-width: 88vw !important;
+  }
+
+  .keys-panel {
+    display: none !important;
+  }
+
+  .sound-panel,
+  .bottom-sound-panel {
+    display: none !important;
+  }
+
+  .game-controls {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: env(safe-area-inset-bottom, 0px) !important;
+    transform: translateX(-50%) !important;
+    width: min(92vw, 360px) !important;
+    z-index: 9999 !important;
+    background: rgba(15, 23, 42, 0.96) !important;
+    padding: 6px 8px 8px !important;
+    border-radius: 14px 14px 0 0 !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45) !important;
+    margin: 0 !important;
+    gap: 4px !important;
+  }
+
+  .game-controls .control-row {
+    gap: 4px !important;
+    row-gap: 4px !important;
+  }
+
+  .game-controls .btn-hold {
+    min-height: 40px !important;
+    height: 40px !important;
+  }
+
+  .game-controls .btn-left,
+  .game-controls .btn-right {
+    min-height: 62px !important;
+    height: 62px !important;
+  }
+
+  .game-controls .btn-rotate {
+    min-height: 36px !important;
+    height: 36px !important;
+  }
+
+  .game-controls .btn-softdrop {
+    min-height: 34px !important;
+    height: 34px !important;
+  }
+
+  .game-controls .btn-harddrop {
+    min-height: 40px !important;
+    height: 40px !important;
+  }
+
+  .game-controls .btn-start,
+  .game-controls .btn-pause,
+  .game-controls .btn-reset {
+    min-height: 38px !important;
+    height: 38px !important;
+  }
+}
+
+body.mobile-device {
+  overflow-x: hidden !important;
+  padding-bottom: 220px !important;
+}
+
+body.mobile-device .app {
+  padding-bottom: 220px !important;
+}
+
+body.mobile-device .board-wrap {
+  width: min(88vw, 24vh) !important;
+  height: min(48vh, calc(min(88vw, 24vh) * 2)) !important;
+  max-width: 88vw !important;
+}
+
+body.mobile-device .keys-panel {
+  display: none !important;
+}
+
+body.mobile-device .sound-panel,
+body.mobile-device .bottom-sound-panel {
+  display: none !important;
+}
+
+body.mobile-device .game-controls {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: env(safe-area-inset-bottom, 0px) !important;
+  transform: translateX(-50%) !important;
+  width: min(92vw, 360px) !important;
+  z-index: 9999 !important;
+  background: rgba(15, 23, 42, 0.96) !important;
+  padding: 6px 8px 8px !important;
+  border-radius: 14px 14px 0 0 !important;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45) !important;
+  margin: 0 !important;
+  gap: 4px !important;
+}
