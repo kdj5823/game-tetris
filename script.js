@@ -1381,17 +1381,30 @@ function setupEvents() {
 }
 
 function updateMobileDeviceClass() {
-  const isMobileDevice =
-    window.matchMedia("(max-width: 768px)").matches ||
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const noHover = window.matchMedia("(hover: none)").matches;
+  const narrowScreen = window.matchMedia("(max-width: 768px)").matches || viewportWidth <= 768;
+  const isMobileDevice = narrowScreen || uaMobile || (coarsePointer && noHover);
 
   document.body.classList.toggle("mobile-device", isMobileDevice);
+
+  // Temporary runtime check for real-device layout troubleshooting.
+  console.log("is mobile mode:", document.body.classList.contains("mobile-device"));
+  console.log("viewport width:", viewportWidth);
+  console.log("userAgent:", navigator.userAgent);
 }
 
-function init() {
+function bindDeviceModeObservers() {
   updateMobileDeviceClass();
   window.addEventListener("resize", updateMobileDeviceClass);
   window.addEventListener("orientationchange", updateMobileDeviceClass);
+  window.addEventListener("pageshow", updateMobileDeviceClass);
+}
+
+function init() {
+  bindDeviceModeObservers();
 
   loadSoundSettings();
   applySoundSettingsToUi();
@@ -1404,4 +1417,5 @@ function init() {
   requestAnimationFrame(gameLoop);
 }
 
+window.addEventListener("DOMContentLoaded", updateMobileDeviceClass);
 init();
