@@ -810,7 +810,7 @@ button:disabled {
 }
 .btn-start {
   background: linear-gradient(135deg, #22c55e, #16a34a);
-  box-shadow: 0 0 0 1px rgba(98, 255, 155, 0.45), 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 1px rgba(98, 255, 155, 0.45), 0 3px 6px rgba(0, 0, 0, 0.24);
 }
 .btn-pause { background: linear-gradient(135deg, #64748b, #475569); }
 .btn-reset { background: linear-gradient(135deg, #ec4899, #db2777); }
