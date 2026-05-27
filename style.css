@@ -65,6 +65,10 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #board {
@@ -72,6 +76,10 @@ body {
   width: 300px;
   height: 600px;
   background: #0b0d12;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .side-panel {
@@ -619,6 +627,15 @@ button:disabled {
   -webkit-user-select: none;
 }
 
+.mobile-gesture-hint {
+  display: none;
+  width: min(90vw, 360px);
+  margin: 8px auto 0;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
 .mobile-status-panel {
   display: none;
   width: min(90vw, 360px);
@@ -667,7 +684,10 @@ button:disabled {
   body {
     overflow-x: hidden;
     align-items: flex-start;
-    padding: 12px;
+    padding: 8px 10px 10px;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .app {
@@ -677,7 +697,8 @@ button:disabled {
 
   .title {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    font-size: 24px;
   }
 
   .game-layout {
@@ -714,9 +735,10 @@ button:disabled {
 
   .board-wrap {
     grid-area: board;
-    width: min(90vw, 300px);
-    height: min(180vw, 600px);
+    width: min(90vw, 34vh);
+    height: min(68vh, calc(min(90vw, 34vh) * 2));
     margin: 0;
+    touch-action: none;
   }
 
   #board {
@@ -730,20 +752,20 @@ button:disabled {
 
   .next-panel {
     width: 100%;
-    max-width: 168px;
+    max-width: 150px;
   }
 
   #next,
   #hold {
-    width: 92px;
-    height: 92px;
+    width: 68px;
+    height: 68px;
   }
 
   .side-panel {
     grid-area: info;
     width: 100%;
-    max-width: min(90vw, 360px);
-    gap: 8px;
+    max-width: min(90vw, 340px);
+    gap: 6px;
     margin: 0 auto;
   }
 
@@ -757,22 +779,53 @@ button:disabled {
 
   .sound-settings label,
   .stats p {
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .sound-settings {
+    padding: 8px 10px;
   }
 
   .mobile-controls {
     display: grid;
     width: min(90vw, 360px);
-    margin: 10px auto 0;
+    margin: 8px auto 0;
+  }
+
+  .mobile-controls .touch-grid-bottom {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #touchRotate,
+  #touchLeft,
+  #touchDown,
+  #touchRight,
+  #touchDrop {
+    display: none;
+  }
+
+  .touch-grid-top,
+  .touch-grid-mid {
+    display: none;
   }
 
   .mobile-status-panel {
+    display: block;
+    margin: 8px auto 0;
+    padding: 7px 10px;
+  }
+
+  .mobile-status-panel p {
+    font-size: 12px;
+  }
+
+  .mobile-gesture-hint {
     display: block;
   }
 
   .buttons {
     width: min(90vw, 360px);
-    margin: 10px auto 0;
+    margin: 8px auto 0;
   }
 
   .buttons button {
@@ -782,8 +835,15 @@ button:disabled {
 
   .status-text {
     width: min(90vw, 360px);
-    margin: 10px auto 0;
+    margin: 8px auto 0;
     text-align: center;
+    font-size: 12px;
+  }
+
+  .score-popup,
+  .combo-popup,
+  .line-clear-popup {
+    max-width: 85%;
   }
 }
 
@@ -794,17 +854,18 @@ button:disabled {
 
   .hold-column,
   .next-panel {
-    max-width: 150px;
+    max-width: 138px;
   }
 
   #next,
   #hold {
-    width: 88px;
-    height: 88px;
+    width: 60px;
+    height: 60px;
   }
 
   .mobile-controls button {
-    font-size: 14px;
-    padding: 8px 10px;
+    font-size: 13px;
+    padding: 6px 8px;
+    min-height: 44px;
   }
 }

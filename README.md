@@ -1,41 +1,45 @@
 # game-tetris
 
-HTML/CSS/JavaScript로 만든 테트리스 게임입니다.  
-PC 키보드 조작과 모바일 터치 조작을 모두 지원합니다.
+Pure HTML/CSS/JavaScript Tetris game.
+Supports both PC keyboard play and mobile gesture play.
 
-## 실행 방법
+## Run
 
-1. `game-tetris` 폴더에서 `index.html`을 브라우저로 엽니다.
-2. `Start` 버튼으로 게임을 시작합니다.
-3. 모바일 브라우저에서는 하단 터치 버튼으로 플레이할 수 있습니다.
+1. Open `index.html` in a browser.
+2. Press `Start`.
 
-## PC 조작
+## PC Controls
 
-- `←` / `→`: 좌우 이동
-- `↓`: 빠른 하강
-- `↑`: 회전
-- `Space`: 즉시 떨어뜨리기
-- `C` 또는 `Shift`: Hold
-- `P`: 일시정지 / 재개
-- `R`: 재시작
+- `Left / Right`: Move
+- `Down`: Soft drop
+- `Up`: Rotate
+- `Space`: Hard drop
+- `C` or `Shift`: Hold
+- `P`: Pause / Resume
+- `R`: Restart
 
-## 모바일 조작
+## Mobile Controls
 
-하단 터치 버튼:
+Board gestures:
 
-- `LEFT`, `RIGHT`, `DOWN`
-- `ROT` (회전)
-- `DROP` (즉시 떨어뜨리기)
+- Tap: Rotate
+- Swipe left/right: Move
+- Swipe down: Soft drop
+- Fast long swipe down: Hard drop
+
+Support buttons:
+
 - `HOLD`
 - `PAUSE`
 - `RESET`
+- `Start`
 
-## 주요 기능
+## Features
 
-- 10x20 보드, 7종 블록
-- Hold / Next 미리보기
-- 점수 / 레벨 / 콤보
-- Double / Triple / Tetris / Combo 팝업 효과
-- Web Audio API 기반 효과음 / 배경음악
-- 사운드 설정(SFX/BGM/볼륨) 및 localStorage 저장
-- PC/모바일 반응형 UI
+- 10x20 board, 7 tetrominoes
+- Hold / Next preview
+- Score / Lines / Level / Combo
+- Double / Triple / Tetris / Combo popups
+- Web Audio API SFX + BGM
+- SFX/BGM/Volume settings with localStorage
+- Responsive UI for PC and mobile

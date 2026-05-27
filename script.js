@@ -36,11 +36,11 @@ const volumeSlider = document.getElementById("volume");
 const touchLeftBtn = document.getElementById("touchLeft");
 const touchRightBtn = document.getElementById("touchRight");
 const touchDownBtn = document.getElementById("touchDown");
-const touchRotateBtn = document.getElementById("touchRotate");
-const touchDropBtn = document.getElementById("touchDrop");
 const touchHoldBtn = document.getElementById("touchHold");
 const touchPauseBtn = document.getElementById("touchPause");
 const touchResetBtn = document.getElementById("touchReset");
+const touchRotateBtn = document.getElementById("touchRotate");
+const touchDropBtn = document.getElementById("touchDrop");
 
 const COLORS = {
   I: "#35d7ff",
@@ -85,6 +85,11 @@ let activeComboPopup = null;
 let activeLineClearPopup = null;
 let heldType = null;
 let canHold = true;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
+let touchMoved = false;
+const TOUCH_DEBUG = true;
 
 const soundSettings = {
   sfxEnabled: true,
@@ -1194,6 +1199,77 @@ function bindTouchAction(button, handler) {
   });
 }
 
+function handleBoardTouchStart(e) {
+  e.preventDefault();
+  if (!e.touches || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  touchStartX = t.clientX;
+  touchStartY = t.clientY;
+  touchStartTime = Date.now();
+  touchMoved = false;
+  if (TOUCH_DEBUG) console.log("[touch] start", touchStartX, touchStartY);
+
+  ensureAudio();
+  if (audio.ctx && audio.ctx.state === "suspended") audio.ctx.resume();
+}
+
+function handleBoardTouchMove(e) {
+  e.preventDefault();
+  if (!e.touches || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  const dx = t.clientX - touchStartX;
+  const dy = t.clientY - touchStartY;
+  if (Math.abs(dx) > 8 || Math.abs(dy) > 8) touchMoved = true;
+}
+
+function handleBoardTouchEnd(e) {
+  e.preventDefault();
+  if (!isRunning || isPaused || isGameOver) return;
+  const changed = e.changedTouches && e.changedTouches[0];
+  if (!changed) return;
+
+  const dx = changed.clientX - touchStartX;
+  const dy = changed.clientY - touchStartY;
+  const dt = Math.max(1, Date.now() - touchStartTime);
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+  if (TOUCH_DEBUG) console.log("[touch] end", { dx, dy, dt });
+
+  const tapMaxDistance = 12;
+  const swipeThreshold = 25;
+  const downThreshold = 25;
+  const hardDropThreshold = 80;
+  const maxTapDuration = 250;
+  const fastSwipe = absY / dt > 0.9;
+
+  if (!touchMoved || (absX < tapMaxDistance && absY < tapMaxDistance && dt < maxTapDuration)) {
+    if (TOUCH_DEBUG) console.log("[touch] tap rotate");
+    actionRotate();
+    return;
+  }
+
+  if (absY > absX && dy > downThreshold) {
+    if (dy > hardDropThreshold || fastSwipe) {
+      if (TOUCH_DEBUG) console.log("[touch] hard drop");
+      actionHardDrop();
+    } else {
+      if (TOUCH_DEBUG) console.log("[touch] soft drop");
+      actionSoftDrop();
+    }
+    return;
+  }
+
+  if (absX > swipeThreshold) {
+    if (dx > 0) {
+      if (TOUCH_DEBUG) console.log("[touch] swipe right");
+      actionMoveRight();
+    } else {
+      if (TOUCH_DEBUG) console.log("[touch] swipe left");
+      actionMoveLeft();
+    }
+  }
+}
+
 function setupEvents() {
   startBtn.addEventListener("click", startGame);
   pauseBtn.addEventListener("click", togglePause);
@@ -1266,6 +1342,10 @@ function setupEvents() {
   bindTouchAction(touchHoldBtn, holdCurrentPiece);
   bindTouchAction(touchPauseBtn, togglePause);
   bindTouchAction(touchResetBtn, restartGame);
+
+  boardCanvas.addEventListener("touchstart", handleBoardTouchStart, { passive: false });
+  boardCanvas.addEventListener("touchmove", handleBoardTouchMove, { passive: false });
+  boardCanvas.addEventListener("touchend", handleBoardTouchEnd, { passive: false });
 }
 
 function init() {
