@@ -713,7 +713,7 @@ button:disabled {
   display: grid;
   width: min(92vw, 360px);
   margin: 8px auto 0;
-  gap: 5px;
+  gap: 4px;
   order: 1;
   user-select: none;
   -webkit-user-select: none;
@@ -731,7 +731,11 @@ button:disabled {
   justify-items: center;
 }
 .harddrop-row { grid-template-columns: 1fr; }
-.action-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.harddrop-row { margin-bottom: 2px; }
+.action-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+}
 
 .control-btn {
   color: #ffffff;
@@ -757,7 +761,11 @@ button:disabled {
 .btn-right {
   height: 88px;
   min-height: 88px;
-  font-size: 28px;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 6px rgba(255, 255, 255, 0.2);
 }
 .btn-rotate#btn-rotate {
   min-height: 38px;
@@ -1029,6 +1037,7 @@ button:disabled {
   .btn-right {
     min-height: 82px;
     height: 82px;
+    font-size: 32px;
   }
   .btn-harddrop {
     min-height: 42px;
