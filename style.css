@@ -2267,8 +2267,8 @@ main .game-controls > .move-row > #btn-down,
 main .game-controls > .move-row > #btn-right {
   width: 100% !important;
   min-width: 0 !important;
-  height: 84px !important;
-  min-height: 84px !important;
+  height: 78px !important;
+  min-height: 78px !important;
 }
 
 main .game-controls > .harddrop-row > #btn-drop {
@@ -2335,8 +2335,8 @@ main .game-controls > .utility-row {
 main .game-controls > .utility-row > #btn-hold,
 main .game-controls > .utility-row > #btn-rotate,
 main .game-controls > .utility-row > #btn-drop {
-  height: 80px !important;
-  min-height: 80px !important;
+  height: 74px !important;
+  min-height: 74px !important;
 }
 
 main .game-controls > .utility-row > #btn-drop {
@@ -2439,15 +2439,15 @@ main .game-controls > .utility-row > #btn-rotate {
   main .game-controls > .move-row > #btn-left,
   main .game-controls > .move-row > #btn-down,
   main .game-controls > .move-row > #btn-right {
-    height: 88px !important;
-    min-height: 88px !important;
+    height: 82px !important;
+    min-height: 82px !important;
   }
 
   main .game-controls > .utility-row > #btn-hold,
   main .game-controls > .utility-row > #btn-drop,
   main .game-controls > .utility-row > #btn-rotate {
-    height: 84px !important;
-    min-height: 84px !important;
+    height: 78px !important;
+    min-height: 78px !important;
   }
 
   main .game-controls > .action-row > #btn-start,
@@ -2624,14 +2624,14 @@ main .game-controls > .utility-row > #btn-rotate {
   #next,
   #next2,
   #next3 {
-    width: 40px !important;
-    height: 40px !important;
+    width: 34px !important;
+    height: 34px !important;
     margin: 3px auto 0 !important;
   }
 
   body.mobile-device .next-stack,
   .next-stack {
-    gap: 5px !important;
+    gap: 4px !important;
   }
 
   body.mobile-device .hold-panel h2,
@@ -2642,6 +2642,11 @@ main .game-controls > .utility-row > #btn-rotate {
     font-size: 9px !important;
     text-align: center !important;
   }
+}
+
+/* request: hide EMPTY text */
+.hold-empty-text {
+  display: none !important;
 }
 
 /* grayscale buttons + readable colored labels/icons */
