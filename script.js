@@ -377,6 +377,10 @@ function drawBoard() {
 }
 
 function drawNext() {
+  syncPreviewCanvasSize(nextCanvas);
+  if (nextCanvas2) syncPreviewCanvasSize(nextCanvas2);
+  if (nextCanvas3) syncPreviewCanvasSize(nextCanvas3);
+
   const slots = [
     { canvas: nextCanvas, ctx: nextCtx, piece: nextQueue[0] || null },
     { canvas: nextCanvas2, ctx: nextCtx2, piece: nextQueue[1] || null },
@@ -394,6 +398,8 @@ function drawNext() {
 }
 
 function drawHoldPiece() {
+  syncPreviewCanvasSize(holdCanvas);
+
   holdCtx.clearRect(0, 0, holdCanvas.width, holdCanvas.height);
   holdCtx.fillStyle = "#0d1018";
   holdCtx.fillRect(0, 0, holdCanvas.width, holdCanvas.height);
@@ -407,13 +413,26 @@ function drawHoldPiece() {
   drawCenteredPreview(holdCtx, holdCanvas, preview.matrix, preview.color);
 }
 
+function syncPreviewCanvasSize(canvas) {
+  if (!canvas) return;
+  const w = Math.max(1, Math.round(canvas.clientWidth || canvas.width));
+  const h = Math.max(1, Math.round(canvas.clientHeight || canvas.height));
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+
 function drawCenteredPreview(ctx, canvas, matrix, color) {
-  const size = 24;
   const bounds = getShapeBounds(matrix);
   if (!bounds) return;
 
   const shapeCols = bounds.maxCol - bounds.minCol + 1;
   const shapeRows = bounds.maxRow - bounds.minRow + 1;
+  const padding = 6;
+  const cellByWidth = Math.floor((canvas.width - padding * 2) / shapeCols);
+  const cellByHeight = Math.floor((canvas.height - padding * 2) / shapeRows);
+  const size = Math.max(4, Math.min(cellByWidth, cellByHeight));
   const shapePixelW = shapeCols * size;
   const shapePixelH = shapeRows * size;
   const startPxX = Math.floor((canvas.width - shapePixelW) / 2);
