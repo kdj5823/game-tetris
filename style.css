@@ -2299,3 +2299,167 @@ main .game-controls #btn-down {
   line-height: 1 !important;
   font-weight: 900 !important;
 }
+
+/* ===== UI refresh (compact, no clipping) ===== */
+.top-status-panel {
+  display: block !important;
+  width: min(92vw, 340px);
+  margin: 0 auto 6px;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.top-status-panel p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.next-stack {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.next-stack canvas {
+  width: 56px !important;
+  height: 56px !important;
+  background: #0d1018;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+main .game-controls > .utility-row {
+  grid-template-columns: 1fr 0.85fr 1fr !important;
+}
+
+main .game-controls > .utility-row > #btn-hold,
+main .game-controls > .utility-row > #btn-rotate,
+main .game-controls > .utility-row > #btn-drop {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
+main .game-controls > .utility-row > #btn-drop {
+  font-size: 24px !important;
+  line-height: 1 !important;
+}
+
+main .game-controls > .utility-row > #btn-rotate {
+  font-size: 28px !important;
+  line-height: 1 !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 8px 8px 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .app {
+    width: min(96vw, 360px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .title {
+    margin: 4px 0 6px !important;
+    font-size: 24px !important;
+    text-align: center !important;
+  }
+
+  .game-layout {
+    display: grid !important;
+    grid-template-columns: 58px 1fr 58px !important;
+    grid-template-areas: "hold board next" !important;
+    align-items: start !important;
+    justify-items: center !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin: 0 auto !important;
+  }
+
+  .hold-column { grid-area: hold !important; width: 58px !important; flex: 0 0 58px !important; }
+  .right-column { grid-area: next !important; width: 58px !important; display: block !important; margin: 0 !important; }
+  .board-wrap { grid-area: board !important; width: 210px !important; height: 420px !important; margin: 0 !important; }
+  #board { width: 210px !important; height: 420px !important; }
+
+  .hold-panel,
+  .next-panel {
+    width: 58px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 4px !important;
+  }
+
+  .hold-panel h2,
+  .next-panel h2 {
+    font-size: 10px !important;
+    margin: 0 0 4px !important;
+    text-align: center !important;
+  }
+
+  .hold-status { display: none !important; }
+
+  .hold-preview-box,
+  #hold,
+  #next,
+  #next2,
+  #next3 {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .top-status-panel {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 6px !important;
+    padding: 5px 8px !important;
+  }
+
+  .top-status-panel p {
+    font-size: 12px !important;
+  }
+
+  .mobile-status-panel:not(.top-status-panel),
+  .side-panel,
+  .keys-panel,
+  .sound-panel,
+  .bottom-sound-panel {
+    display: none !important;
+  }
+
+  main .game-controls {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 8px auto 0 !important;
+    gap: 5px !important;
+  }
+
+  main .game-controls > .move-row > #btn-left,
+  main .game-controls > .move-row > #btn-down,
+  main .game-controls > .move-row > #btn-right {
+    height: 44px !important;
+    min-height: 44px !important;
+  }
+
+  main .game-controls > .utility-row > #btn-hold,
+  main .game-controls > .utility-row > #btn-drop,
+  main .game-controls > .utility-row > #btn-rotate {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  main .game-controls > .action-row > #btn-start,
+  main .game-controls > .action-row > #btn-pause,
+  main .game-controls > .action-row > #btn-reset {
+    height: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .status-text {
+    font-size: 11px !important;
+    margin: 4px 0 0 !important;
+    text-align: center !important;
+  }
+}

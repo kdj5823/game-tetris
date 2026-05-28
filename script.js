@@ -6,9 +6,13 @@ const BLOCK_SIZE = 30;
 
 const boardCanvas = document.getElementById("board");
 const nextCanvas = document.getElementById("next");
+const nextCanvas2 = document.getElementById("next2");
+const nextCanvas3 = document.getElementById("next3");
 const holdCanvas = document.getElementById("hold");
 const boardCtx = boardCanvas.getContext("2d");
 const nextCtx = nextCanvas.getContext("2d");
+const nextCtx2 = nextCanvas2 ? nextCanvas2.getContext("2d") : null;
+const nextCtx3 = nextCanvas3 ? nextCanvas3.getContext("2d") : null;
 const holdCtx = holdCanvas.getContext("2d");
 
 const scoreEl = document.getElementById("score");
@@ -69,6 +73,7 @@ const STORAGE_KEY = "gameTetrisSoundSettings";
 let board = createEmptyBoard();
 let current = null;
 let next = null;
+let nextQueue = [];
 let score = 0;
 let lines = 0;
 let level = 1;
@@ -246,8 +251,12 @@ function lockCurrentPiece() {
 }
 
 function spawnNextPiece() {
-  current = resetPiecePosition(next || createPiece());
-  next = createPiece();
+  if (!nextQueue.length) {
+    nextQueue = [createPiece(), createPiece(), createPiece()];
+  }
+  current = resetPiecePosition(nextQueue.shift());
+  nextQueue.push(createPiece());
+  next = nextQueue[0];
   canHold = true;
   if (collides(current)) {
     isGameOver = true;
@@ -368,12 +377,20 @@ function drawBoard() {
 }
 
 function drawNext() {
-  nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-  nextCtx.fillStyle = "#0d1018";
-  nextCtx.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
-  if (!next) return;
+  const slots = [
+    { canvas: nextCanvas, ctx: nextCtx, piece: nextQueue[0] || null },
+    { canvas: nextCanvas2, ctx: nextCtx2, piece: nextQueue[1] || null },
+    { canvas: nextCanvas3, ctx: nextCtx3, piece: nextQueue[2] || null }
+  ];
 
-  drawCenteredPreview(nextCtx, nextCanvas, next.matrix, next.color);
+  slots.forEach(({ canvas, ctx, piece }) => {
+    if (!canvas || !ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#0d1018";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (!piece) return;
+    drawCenteredPreview(ctx, canvas, piece.matrix, piece.color);
+  });
 }
 
 function drawHoldPiece() {
@@ -458,8 +475,9 @@ function holdCurrentPiece() {
 
   if (!heldType) {
     heldType = current.type;
-    current = resetPiecePosition(next);
-    next = createPiece();
+    current = resetPiecePosition(nextQueue.shift());
+    nextQueue.push(createPiece());
+    next = nextQueue[0];
   } else {
     const swapType = heldType;
     heldType = current.type;
@@ -1118,6 +1136,8 @@ function resetGameState() {
   heldType = null;
   canHold = true;
   isGameOver = false;
+  nextQueue = [createPiece(), createPiece(), createPiece()];
+  next = nextQueue[0];
   spawnNextPiece();
 }
 
