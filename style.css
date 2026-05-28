@@ -2123,3 +2123,33 @@ body.mobile-device .sound-settings {
   height: 42px !important;
   min-height: 42px !important;
 }
+
+/* Final hard override to prevent legacy display:contents/grid-area conflicts */
+.game-controls {
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto !important;
+}
+
+.game-controls .top-action-row,
+.game-controls .move-row,
+.game-controls .harddrop-row,
+.game-controls .action-row {
+  display: grid !important;
+  width: 100% !important;
+}
+
+.game-controls .top-action-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.game-controls .move-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.game-controls .harddrop-row {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.game-controls .action-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
