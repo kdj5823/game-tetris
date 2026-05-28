@@ -2053,3 +2053,73 @@ body.mobile-device .sound-settings {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* Final controls layout lock:
+   [보관][회전]
+   [◀][▼][▶]
+   [즉시낙하]
+   [시작][일시정지][다시하기]
+*/
+.game-controls {
+  display: grid !important;
+  width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  gap: 5px !important;
+  padding: 0 !important;
+}
+
+.game-controls .control-row {
+  display: grid !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.game-controls .top-action-row {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px !important;
+}
+
+.game-controls .move-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+}
+
+.game-controls .harddrop-row {
+  grid-template-columns: 1fr !important;
+}
+
+.game-controls .action-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+}
+
+/* cancel old unified grid-area wiring */
+.game-controls .btn-hold,
+.game-controls .btn-left,
+.game-controls .btn-rotate,
+.game-controls .btn-right,
+.game-controls .btn-softdrop,
+.game-controls .btn-harddrop,
+.game-controls .btn-start,
+.game-controls .btn-pause,
+.game-controls .btn-reset {
+  grid-area: auto !important;
+  grid-column: auto !important;
+  width: 100% !important;
+}
+
+.game-controls .top-action-row .btn-hold,
+.game-controls .top-action-row .btn-rotate {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+/* requested: left/down/right same height */
+.game-controls .move-row .btn-left,
+.game-controls .move-row .btn-softdrop,
+.game-controls .move-row .btn-right {
+  height: 42px !important;
+  min-height: 42px !important;
+}
