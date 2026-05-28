@@ -2153,3 +2153,149 @@ body.mobile-device .sound-settings {
 .game-controls .action-row {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
+
+/* Emergency override: restore clean 4-row controls layout */
+.game-controls {
+  display: grid !important;
+  width: min(92vw, 340px) !important;
+  max-width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  gap: 6px !important;
+  padding: 0 !important;
+}
+
+.game-controls .control-row,
+.game-controls .top-action-row.control-row,
+.game-controls .move-row.control-row,
+.game-controls .harddrop-row.control-row,
+.game-controls .action-row.control-row {
+  display: grid !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.game-controls .top-action-row { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+.game-controls .move-row { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 6px !important; }
+.game-controls .harddrop-row { grid-template-columns: 1fr !important; }
+.game-controls .action-row { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 6px !important; margin-top: 0 !important; }
+
+.game-controls .btn-hold,
+.game-controls .btn-rotate,
+.game-controls .btn-left,
+.game-controls .btn-softdrop,
+.game-controls .btn-right,
+.game-controls .btn-harddrop,
+.game-controls .btn-start,
+.game-controls .btn-pause,
+.game-controls .btn-reset {
+  grid-area: auto !important;
+  grid-column: auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.game-controls .top-action-row .btn-hold,
+.game-controls .top-action-row .btn-rotate,
+.game-controls .move-row .btn-left,
+.game-controls .move-row .btn-softdrop,
+.game-controls .move-row .btn-right,
+.game-controls .harddrop-row .btn-harddrop {
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+.game-controls .action-row .btn-start,
+.game-controls .action-row .btn-pause,
+.game-controls .action-row .btn-reset {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
+/* ===== FINAL CONTROL PANEL LOCK (do not override below) ===== */
+main .game-controls {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(92vw, 340px) !important;
+  max-width: min(92vw, 340px) !important;
+  margin: 8px auto 0 !important;
+  padding: 0 !important;
+  gap: 6px !important;
+}
+
+main .game-controls > .control-row {
+  display: grid !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 6px !important;
+}
+
+main .game-controls > .top-action-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+main .game-controls > .move-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+main .game-controls > .harddrop-row {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+main .game-controls > .action-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  margin-top: 0 !important;
+}
+
+main .game-controls > .top-action-row > #btn-hold,
+main .game-controls > .top-action-row > #btn-rotate {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+main .game-controls > .move-row > #btn-left,
+main .game-controls > .move-row > #btn-down,
+main .game-controls > .move-row > #btn-right {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+main .game-controls > .harddrop-row > #btn-drop {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 42px !important;
+  min-height: 42px !important;
+}
+
+main .game-controls > .action-row > #btn-start,
+main .game-controls > .action-row > #btn-pause,
+main .game-controls > .action-row > #btn-reset {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  white-space: nowrap !important;
+}
+
+main .game-controls #btn-left,
+main .game-controls #btn-right {
+  font-size: 28px !important;
+  line-height: 1 !important;
+}
+
+main .game-controls #btn-down {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+}
