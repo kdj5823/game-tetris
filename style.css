@@ -2267,8 +2267,8 @@ main .game-controls > .move-row > #btn-down,
 main .game-controls > .move-row > #btn-right {
   width: 100% !important;
   min-width: 0 !important;
-  height: 92px !important;
-  min-height: 92px !important;
+  height: 84px !important;
+  min-height: 84px !important;
 }
 
 main .game-controls > .harddrop-row > #btn-drop {
@@ -2335,8 +2335,8 @@ main .game-controls > .utility-row {
 main .game-controls > .utility-row > #btn-hold,
 main .game-controls > .utility-row > #btn-rotate,
 main .game-controls > .utility-row > #btn-drop {
-  height: 88px !important;
-  min-height: 88px !important;
+  height: 80px !important;
+  min-height: 80px !important;
 }
 
 main .game-controls > .utility-row > #btn-drop {
@@ -2439,15 +2439,15 @@ main .game-controls > .utility-row > #btn-rotate {
   main .game-controls > .move-row > #btn-left,
   main .game-controls > .move-row > #btn-down,
   main .game-controls > .move-row > #btn-right {
-    height: 96px !important;
-    min-height: 96px !important;
+    height: 88px !important;
+    min-height: 88px !important;
   }
 
   main .game-controls > .utility-row > #btn-hold,
   main .game-controls > .utility-row > #btn-drop,
   main .game-controls > .utility-row > #btn-rotate {
-    height: 88px !important;
-    min-height: 88px !important;
+    height: 84px !important;
+    min-height: 84px !important;
   }
 
   main .game-controls > .action-row > #btn-start,
@@ -2642,4 +2642,40 @@ main .game-controls > .utility-row > #btn-rotate {
     font-size: 9px !important;
     text-align: center !important;
   }
+}
+
+/* grayscale buttons + readable colored labels/icons */
+main .game-controls .control-btn {
+  background: linear-gradient(135deg, #646b78, #474d57) !important;
+  color: #f4f7ff !important;
+}
+
+main .game-controls #btn-left,
+main .game-controls #btn-right,
+main .game-controls #btn-down {
+  color: #8ec5ff !important;
+}
+
+main .game-controls #btn-hold {
+  color: #6ff5d0 !important;
+}
+
+main .game-controls #btn-rotate {
+  color: #ffb38f !important;
+}
+
+main .game-controls #btn-drop {
+  color: #ffd27f !important;
+}
+
+main .game-controls #btn-start {
+  color: #70f28a !important;
+}
+
+main .game-controls #btn-pause {
+  color: #d5dcf0 !important;
+}
+
+main .game-controls #btn-reset {
+  color: #ffa8d7 !important;
 }
