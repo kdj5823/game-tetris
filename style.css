@@ -2267,8 +2267,8 @@ main .game-controls > .move-row > #btn-down,
 main .game-controls > .move-row > #btn-right {
   width: 100% !important;
   min-width: 0 !important;
-  height: 46px !important;
-  min-height: 46px !important;
+  height: 92px !important;
+  min-height: 92px !important;
 }
 
 main .game-controls > .harddrop-row > #btn-drop {
@@ -2335,8 +2335,8 @@ main .game-controls > .utility-row {
 main .game-controls > .utility-row > #btn-hold,
 main .game-controls > .utility-row > #btn-rotate,
 main .game-controls > .utility-row > #btn-drop {
-  height: 44px !important;
-  min-height: 44px !important;
+  height: 88px !important;
+  min-height: 88px !important;
 }
 
 main .game-controls > .utility-row > #btn-drop {
@@ -2439,15 +2439,15 @@ main .game-controls > .utility-row > #btn-rotate {
   main .game-controls > .move-row > #btn-left,
   main .game-controls > .move-row > #btn-down,
   main .game-controls > .move-row > #btn-right {
-    height: 48px !important;
-    min-height: 48px !important;
+    height: 96px !important;
+    min-height: 96px !important;
   }
 
   main .game-controls > .utility-row > #btn-hold,
   main .game-controls > .utility-row > #btn-drop,
   main .game-controls > .utility-row > #btn-rotate {
-    height: 44px !important;
-    min-height: 44px !important;
+    height: 88px !important;
+    min-height: 88px !important;
   }
 
   main .game-controls > .action-row > #btn-start,
