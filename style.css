@@ -2777,6 +2777,97 @@ main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-but
 
 main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
 
+/* =========================================================
+   Visual polish pack (background + falling vibe + rollover)
+   ========================================================= */
+
+body {
+  background:
+    radial-gradient(1200px 500px at 50% -120px, rgba(119, 211, 255, 0.22), rgba(12, 18, 36, 0) 55%),
+    linear-gradient(180deg, #1b2a64 0%, #1a2461 35%, #171d48 100%) !important;
+}
+
+.app {
+  position: relative;
+  isolation: isolate;
+}
+
+/* soft puzzle glow behind app */
+.app::before {
+  content: "";
+  position: absolute;
+  inset: -10px -8px;
+  z-index: -1;
+  border-radius: 14px;
+  background:
+    radial-gradient(220px 140px at 16% 16%, rgba(72, 202, 255, 0.16), transparent 70%),
+    radial-gradient(220px 140px at 84% 18%, rgba(255, 170, 76, 0.13), transparent 70%),
+    radial-gradient(260px 180px at 50% 86%, rgba(180, 130, 255, 0.13), transparent 72%);
+  pointer-events: none;
+}
+
+.board-wrap {
+  background:
+    linear-gradient(180deg, rgba(13, 33, 86, 0.95), rgba(9, 20, 56, 0.96)),
+    radial-gradient(circle at 50% 18%, rgba(94, 191, 255, 0.09), transparent 62%);
+}
+
+/* falling motion feel */
+.board-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(118, 226, 255, 0) 0%, rgba(118, 226, 255, 0.22) 50%, rgba(118, 226, 255, 0) 100%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(78, 170, 255, 0) 0 24px,
+      rgba(78, 170, 255, 0.06) 24px 28px
+    );
+  mix-blend-mode: screen;
+  animation: board-fall-flow 2.3s linear infinite;
+}
+
+@keyframes board-fall-flow {
+  0% {
+    transform: translateY(-28px);
+    opacity: 0.35;
+  }
+  55% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(28px);
+    opacity: 0.35;
+  }
+}
+
+/* image button tidy + rollover */
+main .game-controls .control-btn,
+.center-action-panel .center-action-btn {
+  transition: transform 0.12s ease, filter 0.18s ease;
+  filter: drop-shadow(0 3px 6px rgba(10, 20, 44, 0.6));
+}
+
+main .game-controls .control-btn:hover,
+.center-action-panel .center-action-btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  filter:
+    drop-shadow(0 6px 10px rgba(10, 20, 44, 0.58))
+    drop-shadow(0 0 9px rgba(140, 230, 255, 0.52));
+}
+
+main .game-controls .control-btn:active,
+.center-action-panel .center-action-btn:active {
+  transform: translateY(1px) scale(0.97);
+  filter:
+    brightness(0.94)
+    saturate(1.08)
+    drop-shadow(0 2px 4px rgba(10, 20, 44, 0.5));
+}
+
+
 /* ===== Clean override: image mapping + center action ===== */
 main .game-controls #btn-left { background: transparent url("assets/ui-buttons/btn-left.png") center / contain no-repeat !important; }
 main .game-controls #btn-down { background: transparent url("assets/ui-buttons/btn-down.png") center / contain no-repeat !important; }
