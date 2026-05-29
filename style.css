@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #15171f;
   --panel: #1f2330;
   --panel-2: #2a3040;
@@ -31,18 +31,21 @@ body {
 }
 
 .title {
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   font-size: 32px;
   font-weight: 700;
   text-align: center;
+  line-height: 0;
+  overflow: hidden;
 }
 
 .title-logo {
   display: block;
-  width: min(92vw, 360px);
+  width: min(82vw, 300px);
   max-width: 100%;
   height: auto;
   margin: 0 auto;
+  transform: translateY(-8px);
 }
 
 .game-layout {
@@ -2023,7 +2026,7 @@ body.mobile-device .sound-settings {
   display: none !important;
 }
 
-/* Top row only fix: [보관] [회전] */
+/* Top row only fix: [蹂닿?] [?뚯쟾] */
 .game-controls .top-action-row {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
@@ -2063,10 +2066,10 @@ body.mobile-device .sound-settings {
 }
 
 /* Final controls layout lock:
-   [보관][회전]
-   [◀][▼][▶]
-   [즉시낙하]
-   [시작][일시정지][다시하기]
+   [蹂닿?][?뚯쟾]
+   [?][??[??
+   [利됱떆?숉븯]
+   [?쒖옉][?쇱떆?뺤?][?ㅼ떆?섍린]
 */
 .game-controls {
   display: grid !important;
@@ -2297,16 +2300,9 @@ main .game-controls > .action-row > #btn-reset {
 }
 
 main .game-controls #btn-left,
-main .game-controls #btn-right {
-  font-size: 28px !important;
-  line-height: 1 !important;
-}
+main .game-controls #btn-right {`r`n  background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important;`r`n}
 
-main .game-controls #btn-down {
-  font-size: 26px !important;
-  line-height: 1 !important;
-  font-weight: 900 !important;
-}
+main .game-controls #btn-down {`r`n  background: transparent url("assets/ui-buttons/btn-down.png") center / contain no-repeat !important;`r`n}
 
 /* ===== UI refresh (compact, no clipping) ===== */
 .top-status-panel {
@@ -2358,6 +2354,16 @@ main .game-controls > .utility-row > #btn-rotate {
 }
 
 @media (max-width: 768px) {
+  .title-logo {
+    width: min(72vw, 250px) !important;
+    transform: translateY(-12px) !important;
+  }
+
+  .title {
+    margin: 0 0 2px !important;
+    height: 46px !important;
+  }
+
   body {
     padding: 8px 8px 10px !important;
     align-items: flex-start !important;
@@ -2670,6 +2676,10 @@ main .game-controls > .utility-row > #btn-rotate {
 
   body.mobile-device .hold-panel {
     height: 44px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
   }
 
   body.mobile-device .next-panel {
@@ -2701,7 +2711,270 @@ main .game-controls > .utility-row > #btn-rotate {
     font-size: 7px !important;
     margin: 0 0 1px !important;
     letter-spacing: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
   }
+
+  body.mobile-device .hold-header {
+    width: 100% !important;
+    margin: 0 0 1px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  body.mobile-device .hold-preview-box {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+/* Premium soft-game button skin */
+main .game-controls .control-btn {
+  position: relative !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.2px !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+    0 8px 14px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.26) !important;
+  transition: transform 0.08s ease, filter 0.12s ease !important;
+}
+
+main .game-controls .control-btn::before {
+  content: "";
+  position: absolute;
+  inset: 2px 4px auto 4px;
+  height: 36%;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.34), rgba(255,255,255,0.02));
+  pointer-events: none;
+}
+
+main .game-controls #btn-left,
+main .game-controls #btn-down,
+main .game-controls #btn-right {`r`n  background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-hold {`r`n  background: transparent url("assets/ui-buttons/btn-hold.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-drop {`r`n  background: transparent url("assets/ui-buttons/btn-drop.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-rotate {`r`n  background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-start {`r`n  background: transparent url("assets/ui-buttons/btn-play.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-buttons/btn-pause.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
+/* ===== Hard override: image buttons final ===== */
+main .game-controls .control-btn {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+}
+
+main .game-controls .control-btn::before,
+main .game-controls .control-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+main .game-controls #btn-left {
+  background-image: url("assets/ui-buttons/btn-left.png") !important;
+}
+
+main .game-controls #btn-down {
+  background-image: url("assets/ui-buttons/btn-down.png") !important;
+}
+
+main .game-controls #btn-right {
+  background-image: url("assets/ui-buttons/btn-right.png") !important;
+}
+
+main .game-controls #btn-hold {
+  background-image: url("assets/ui-buttons/btn-hold.png") !important;
+}
+
+main .game-controls #btn-drop {
+  background-image: url("assets/ui-buttons/btn-drop.png") !important;
+}
+
+main .game-controls #btn-rotate {
+  background-image: url("assets/ui-buttons/btn-rotate.png") !important;
+}
+
+main .game-controls #btn-start {
+  background-image: url("assets/ui-buttons/btn-play.png") !important;
+}
+
+main .game-controls #btn-pause {
+  background-image: url("assets/ui-buttons/btn-pause.png") !important;
+}
+
+main .game-controls #btn-reset {
+  background-image: url("assets/ui-buttons/btn-replay.png") !important;
+}
+
+/* hide legacy icon/text layer only */
+main .game-controls .control-btn .btn-icon,
+main .game-controls .control-btn .btn-text {
+  opacity: 0 !important;
+}
+
+/* keep visual size balanced while preserving each image ratio */
+main .game-controls .move-row > .control-btn,
+main .game-controls .utility-row > .control-btn,
+main .game-controls .action-row > .control-btn {
+  height: 64px !important;
+  min-height: 64px !important;
+}
+
+main .game-controls .control-btn:active {
+  transform: translateY(1px) scale(0.985) !important;
+  filter: saturate(1.08) brightness(0.98) !important;
+}
+
+/* icon/text balance cleanup */
+main .game-controls #btn-left,
+main .game-controls #btn-down,
+main .game-controls #btn-right,
+main .game-controls #btn-drop,
+main .game-controls #btn-rotate {`r`n  background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-hold,
+main .game-controls #btn-start,
+main .game-controls #btn-pause,
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-buttons/btn-pause.png") center / contain no-repeat !important;`r`n}
+
+/* ===== Arcade glossy button redesign (reference style) ===== */
+main .game-controls .control-btn {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+  border: 2px solid #c88322 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.38), 0 0 6px rgba(255, 255, 255, 0.16) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+    0 5px 0 #7a4a12,
+    0 10px 16px rgba(0, 0, 0, 0.34) !important;
+}
+
+main .game-controls .control-btn::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 8%;
+  height: 42%;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+main .game-controls .control-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+/* blue action cluster */
+main .game-controls #btn-left,
+main .game-controls #btn-down,
+main .game-controls #btn-right {`r`n  background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important;`r`n}
+
+/* orange utility cluster */
+main .game-controls #btn-hold,
+main .game-controls #btn-drop,
+main .game-controls #btn-rotate {`r`n  background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important;`r`n}
+
+/* bottom row colorful like casual game UI */
+main .game-controls #btn-start {`r`n  background: transparent url("assets/ui-buttons/btn-play.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-buttons/btn-pause.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls .control-btn:active {
+  transform: translateY(3px) scale(0.985) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 2px 0 #7a4a12,
+    0 5px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* inside icon/text redesign */
+main .game-controls .control-btn .btn-icon,
+main .game-controls .control-btn .btn-text {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .game-controls .control-btn .btn-icon {
+  width: 30px;
+  height: 30px;
+  color: #fff !important;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.35));
+}
+
+main .game-controls #btn-rotate .btn-icon,
+main .game-controls #btn-drop .btn-icon {
+  width: 28px;
+  height: 28px;
+}
+
+main .game-controls #btn-pause .btn-icon {
+  width: 24px;
+  height: 24px;
+}
+
+main .game-controls .btn-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+main .game-controls .control-btn .btn-text {
+  font-family: "Segoe UI", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #fff !important;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.35));
+}
+
+main .game-controls #btn-reset .btn-text {
+  font-size: 18px;
 }
 
 /* request: hide EMPTY text */
@@ -2711,36 +2984,106 @@ main .game-controls > .utility-row > #btn-rotate {
 
 /* grayscale buttons + readable colored labels/icons */
 main .game-controls .control-btn {
-  background: linear-gradient(135deg, #646b78, #474d57) !important;
-  color: #f4f7ff !important;
+  color: #fff !important;
+}
+
+/* Final concept lock: soft cartoon UI like reference */
+main .game-controls .control-btn {
+  border-radius: 18px !important;
+  border: 3px solid #8feaff !important;
+  box-shadow:
+    inset 0 3px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+    0 4px 0 rgba(53, 79, 124, 0.9),
+    0 10px 16px rgba(0, 0, 0, 0.33) !important;
+}
+
+main .game-controls .control-btn::before {
+  height: 38% !important;
+  top: 7% !important;
+  left: 7% !important;
+  right: 7% !important;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.06)) !important;
+}
+
+main .game-controls .control-btn::after {
+  border-radius: 15px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 main .game-controls #btn-left,
+main .game-controls #btn-down,
 main .game-controls #btn-right,
-main .game-controls #btn-down {
-  color: #8ec5ff !important;
+main .game-controls #btn-hold,
+main .game-controls #btn-drop,
+main .game-controls #btn-rotate,
+main .game-controls #btn-start,
+main .game-controls #btn-pause,
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-left,
+main .game-controls #btn-down,
+main .game-controls #btn-right {`r`n  background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-hold,
+main .game-controls #btn-start {`r`n  background: transparent url("assets/ui-buttons/btn-play.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-drop,
+main .game-controls #btn-rotate {`r`n  background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-buttons/btn-pause.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls .control-btn .btn-icon,
+main .game-controls .control-btn .btn-text {
+  color: #ffffff !important;
+  filter: drop-shadow(0 2px 0 rgba(104, 41, 6, 0.45)) !important;
 }
 
-main .game-controls #btn-hold {
-  color: #6ff5d0 !important;
+/* ===== Final: user-provided image buttons ===== */
+main .game-controls {
+  width: min(92vw, 340px) !important;
 }
 
-main .game-controls #btn-rotate {
-  color: #ffb38f !important;
+main .game-controls .control-btn {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  outline: none !important;
 }
 
-main .game-controls #btn-drop {
-  color: #ffd27f !important;
+main .game-controls .control-btn::before,
+main .game-controls .control-btn::after {
+  display: none !important;
 }
 
-main .game-controls #btn-start {
-  color: #70f28a !important;
+main .game-controls .control-btn .btn-icon,
+main .game-controls .control-btn .btn-text {
+  opacity: 0 !important;
 }
 
-main .game-controls #btn-pause {
-  color: #d5dcf0 !important;
-}
+main .game-controls #btn-left {`r`n  background: transparent url("assets/ui-buttons/btn-left.png") center / contain no-repeat !important;`r`n}
 
-main .game-controls #btn-reset {
-  color: #ffa8d7 !important;
-}
+main .game-controls #btn-down {`r`n  background: transparent url("assets/ui-buttons/btn-down.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-right {`r`n  background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-hold {`r`n  background: transparent url("assets/ui-buttons/btn-hold.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-drop {`r`n  background: transparent url("assets/ui-buttons/btn-drop.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-rotate {`r`n  background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-start {`r`n  background: transparent url("assets/ui-buttons/btn-play.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-buttons/btn-pause.png") center / contain no-repeat !important;`r`n}
+
+main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
+
