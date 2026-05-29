@@ -35,6 +35,11 @@
       <div class="board-wrap" id="boardWrap">
         <canvas id="board" width="300" height="600" aria-label="Tetris board"></canvas>
         <div id="scorePopupLayer" class="score-popup-layer" aria-hidden="true"></div>
+        <div id="centerActionPanel" class="center-action-panel" aria-label="Main action">
+          <button id="btn-start" type="button" class="control-btn btn-start center-action-btn" aria-label="PLAY" title="PLAY"><span class="btn-text">PLAY</span></button>
+          <button id="btn-pause" type="button" class="control-btn btn-pause center-action-btn" aria-label="일시정지" title="일시정지"><span class="btn-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h4v16H7V4Zm6 0h4v16h-4V4Z"/></svg></span></button>
+          <button id="btn-reset" type="button" class="control-btn btn-reset center-action-btn" aria-label="REPLAY" title="REPLAY"><span class="btn-text">REPLAY</span></button>
+        </div>
       </div>
 
       <aside class="right-column">
@@ -81,11 +86,6 @@
         <button id="btn-rotate" type="button" class="control-btn btn-rotate" aria-label="회전" title="회전"><span class="btn-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.7 9h2.2A5 5 0 1 0 12 7c-1.3 0-2.5.5-3.4 1.3L11 10H4V3l2.9 2.9A8.9 8.9 0 0 1 12 5Z"/></svg></span></button>
       </div>
 
-      <div class="control-row action-row">
-        <button id="btn-start" type="button" class="control-btn btn-start" aria-label="PLAY" title="PLAY"><span class="btn-text">PLAY</span></button>
-        <button id="btn-pause" type="button" class="control-btn btn-pause" aria-label="일시정지" title="일시정지"><span class="btn-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h4v16H7V4Zm6 0h4v16h-4V4Z"/></svg></span></button>
-        <button id="btn-reset" type="button" class="control-btn btn-reset" aria-label="REPLAY" title="REPLAY"><span class="btn-text">REPLAY</span></button>
-      </div>
     </section>
     <section class="panel sound-settings bottom-sound-panel sound-panel" aria-label="Sound settings">
       <h2>SOUND</h2>

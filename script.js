@@ -31,6 +31,7 @@ const boardWrap = document.getElementById("boardWrap");
 const holdPanel = document.getElementById("holdPanel");
 const holdStatusEl = document.getElementById("holdStatus");
 const holdEmptyTextEl = document.getElementById("holdEmptyText");
+const centerActionPanel = document.getElementById("centerActionPanel");
 
 const startBtn = document.getElementById("btn-start") || document.getElementById("startBtn");
 const pauseBtn = document.getElementById("btn-pause") || document.getElementById("pauseBtn");
@@ -531,6 +532,30 @@ function renderStats() {
 
 function setStatus(message) {
   statusEl.textContent = message;
+}
+
+function updateCenterActionButton() {
+  if (!centerActionPanel || !startBtn || !pauseBtn || !restartBtn) return;
+
+  startBtn.classList.remove("is-visible");
+  pauseBtn.classList.remove("is-visible");
+  restartBtn.classList.remove("is-visible");
+  centerActionPanel.classList.remove("mode-start", "mode-pause", "mode-replay");
+
+  if (!isRunning && !isGameOver) {
+    startBtn.classList.add("is-visible");
+    centerActionPanel.classList.add("mode-start");
+    return;
+  }
+
+  if (isGameOver) {
+    restartBtn.classList.add("is-visible");
+    centerActionPanel.classList.add("mode-replay");
+    return;
+  }
+
+  pauseBtn.classList.add("is-visible");
+  centerActionPanel.classList.add("mode-pause");
 }
 
 function makePopupElement(className, text, topPx) {
@@ -1221,6 +1246,7 @@ function gameLoop(timestamp) {
   drawNext();
   drawHoldPiece();
   renderStats();
+  updateCenterActionButton();
   requestAnimationFrame(gameLoop);
 }
 
@@ -1452,6 +1478,7 @@ function init() {
   drawNext();
   drawHoldPiece();
   renderStats();
+  updateCenterActionButton();
   setupEvents();
   requestAnimationFrame(gameLoop);
 }

@@ -2777,6 +2777,70 @@ main .game-controls #btn-pause {`r`n  background: transparent url("assets/ui-but
 
 main .game-controls #btn-reset {`r`n  background: transparent url("assets/ui-buttons/btn-replay.png") center / contain no-repeat !important;`r`n}
 
+/* ===== Clean override: image mapping + center action ===== */
+main .game-controls #btn-left { background: transparent url("assets/ui-buttons/btn-left.png") center / contain no-repeat !important; }
+main .game-controls #btn-down { background: transparent url("assets/ui-buttons/btn-down.png") center / contain no-repeat !important; }
+main .game-controls #btn-right { background: transparent url("assets/ui-buttons/btn-right.png") center / contain no-repeat !important; }
+main .game-controls #btn-hold { background: transparent url("assets/ui-buttons/btn-hold.png") center / contain no-repeat !important; }
+main .game-controls #btn-drop { background: transparent url("assets/ui-buttons/btn-drop.png") center / contain no-repeat !important; }
+main .game-controls #btn-rotate { background: transparent url("assets/ui-buttons/btn-rotate.png") center / contain no-repeat !important; }
+
+.board-wrap {
+  position: relative;
+}
+
+.center-action-panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 26;
+  width: clamp(110px, 34%, 150px);
+  pointer-events: none;
+}
+
+.center-action-panel.mode-pause {
+  left: 119%;
+  top: 28%;
+  transform: translate(-50%, 0);
+  width: clamp(56px, 16%, 68px);
+}
+
+/* allow pause button to live in the right-side panel area */
+.board-wrap {
+  overflow: visible !important;
+}
+
+.center-action-panel .center-action-btn {
+  display: none;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  pointer-events: auto;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: contain !important;
+  padding: 0 !important;
+}
+
+.center-action-panel .center-action-btn.is-visible {
+  display: block;
+}
+
+.center-action-panel .center-action-btn .btn-icon,
+.center-action-panel .center-action-btn .btn-text {
+  opacity: 0 !important;
+}
+
+.center-action-panel #btn-start { background-image: url("assets/ui-buttons/btn-play.png") !important; }
+.center-action-panel #btn-pause { background-image: url("assets/ui-buttons/btn-pause.png") !important; }
+.center-action-panel #btn-reset { background-image: url("assets/ui-buttons/btn-replay.png") !important; }
+
 /* ===== Hard override: image buttons final ===== */
 main .game-controls .control-btn {
   -webkit-appearance: none !important;
